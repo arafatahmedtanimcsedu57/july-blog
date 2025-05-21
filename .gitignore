@@ -1,0 +1,63 @@
+# Node modules
+node_modules/
+
+# Media assets
+media/
+
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Misc
+*.tgz
+*.swp
+
+# Next.js export
+out/
+
+# Payload CMS cache
+.cache/
+
+# Docker
+docker-compose.override.yml
+
+# Ignore local media and cron images
+src/payload/cron/*.jpg
+src/payload/cron/*.png
+src/payload/cron/*.jpeg
