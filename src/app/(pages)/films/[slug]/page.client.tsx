@@ -17,47 +17,7 @@ export const FilmClient: React.FC<{ film: Film }> = ({ film: initialFilm }) => {
   return (
     <React.Fragment>
       <FilmHero film={data} />
-      <Blocks
-        blocks={[
-          ...(data.layout as any),
-          {
-            blockName: 'Related Films',
-            blockType: 'relatedPosts',
-            docs: data.relatedFilms,
-            introContent: [
-              {
-                children: [
-                  {
-                    text: 'Related films',
-                  },
-                ],
-                type: 'h4',
-              },
-              {
-                children: [
-                  {
-                    text: 'The films displayed here are individually selected for this page. Admins can select any number of related films to display here and the layout will adjust accordingly. Alternatively, you could swap this out for the "Archive" block to automatically populate films by category complete with pagination. To manage related films, ',
-                  },
-                  {
-                    children: [
-                      {
-                        text: 'navigate to the admin dashboard',
-                      },
-                    ],
-                    type: 'link',
-                    url: `/admin/collections/films/${data.id}`,
-                  },
-                  {
-                    text: '.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-            relationTo: 'films',
-          },
-        ]}
-      />
+      <Blocks blocks={data.layout} />
     </React.Fragment>
   )
 }
