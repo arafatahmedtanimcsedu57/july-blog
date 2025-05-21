@@ -13,21 +13,22 @@ import { buildConfig } from 'payload/config'
 
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
+import { Films } from './collections/Films'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
-import { Films } from './collections/Films'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
+import Logo, { Icon } from './components/Logo'
 import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
 
 const generateTitle: GenerateTitle = () => {
-  return 'Payload Public Demo'
+  return 'MONSOON PROTEST ARCHIVES'
 }
 
 const m = path.resolve(__dirname, './emptyModuleMock.js')
@@ -43,6 +44,7 @@ export default buildConfig({
     components: {
       beforeDashboard: [BeforeDashboard],
       beforeLogin: [BeforeLogin],
+      graphics: { Icon, Logo },
     },
     livePreview: {
       breakpoints: [
@@ -53,6 +55,11 @@ export default buildConfig({
           width: 375,
         },
       ],
+    },
+    meta: {
+      favicon: './favicon.svg',
+      ogImage: './logo.png',
+      titleSuffix: 'MONSOON PROTEST ARCHIVES',
     },
     user: Users.slug,
     webpack: (config) => ({

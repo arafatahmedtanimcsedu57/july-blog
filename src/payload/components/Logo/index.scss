@@ -1,0 +1,34 @@
+@import "~payload/scss";
+
+.wrap__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  .logo {
+    width: 6rem;
+  }
+
+  .brand {
+    font-size: 2rem;
+    font-weight: 600;
+    max-width: 200px;
+    margin: 0 !important;
+  }
+}
+
+.wrap__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .logo {
+    width: 2rem;
+  }
+
+  .brand {
+    margin: 0 !important;
+  }
+}

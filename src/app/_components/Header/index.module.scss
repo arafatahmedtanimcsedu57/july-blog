@@ -1,4 +1,4 @@
-@use '../../_css/queries.scss' as *;
+@use "../../_css/queries.scss" as *;
 
 .header {
   padding: var(--base) 0;
@@ -7,15 +7,25 @@
 .wrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: calc(var(--base) / 2) var(--base);
+  text-decoration: none !important;
 }
 
 .logo {
-  width: 150px;
+  width: 6rem;
 }
 
-:global([data-theme='light']) {
+.brand {
+  text-decoration: none !important;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 600;
+  max-width: 200px;
+}
+
+:global([data-theme="light"]) {
   .logo {
     filter: invert(1);
   }
