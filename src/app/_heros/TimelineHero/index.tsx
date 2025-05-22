@@ -5,6 +5,7 @@ import type { Page } from '../../../payload/payload-types'
 import { Gutter } from '../../_components/Gutter'
 import { Media } from '../../_components/Media'
 import RichText from '../../_components/RichText'
+import { VerticalPadding } from '../../_components/VerticalPadding'
 import classes from './index.module.scss'
 
 export const TimelineHero: React.FC<{
@@ -15,10 +16,13 @@ export const TimelineHero: React.FC<{
   return (
     <Fragment>
       <Gutter className={classes.timelineHero}>
-        <div className={metaImage ? classes.content : classes.contentFull}>
-          <h1 className={classes.title}>{title}</h1>
-          {hero && <RichText content={hero.richText} />}
-        </div>
+        {hero && (
+          <VerticalPadding>
+            <div className={metaImage ? classes.content : classes.contentFull}>
+              <RichText content={hero.richText} />
+            </div>
+          </VerticalPadding>
+        )}
         {metaImage && (
           <div className={classes.media}>
             <div className={classes.mediaWrapper}>
