@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
 import { adminsOrPublished } from '../../access/adminsOrPublished'
+import BeforeIndividualIncident from '../../components/BeforeIndividualIncident'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { districts, genders, graphicLevels, incidentTypes } from '../constant'
 import { locationCoordinates } from './hooks/locationCoordinates'
@@ -14,6 +15,9 @@ const IndividualIncident: CollectionConfig = {
     update: admins,
   },
   admin: {
+    components: {
+      BeforeListTable: [BeforeIndividualIncident],
+    },
     defaultColumns: ['name', 'type', 'location', 'date'],
     group: 'Incidents',
     useAsTitle: 'name',

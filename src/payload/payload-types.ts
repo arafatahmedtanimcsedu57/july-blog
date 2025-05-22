@@ -16,6 +16,7 @@ export interface Config {
     categories: Category;
     users: User;
     comments: Comment;
+    'individual-incidents': IndividualIncident;
     redirects: Redirect;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -1114,6 +1115,100 @@ export interface Comment {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "individual-incidents".
+ */
+export interface IndividualIncident {
+  id: string;
+  name: string;
+  gender?: ('male' | 'female' | 'other') | null;
+  age?: number | null;
+  occupation?: string | null;
+  type: 'Injury' | 'Death';
+  location?: string | null;
+  district?:
+    | (
+        | 'Barguna'
+        | 'Barisal'
+        | 'Bhola'
+        | 'Jhalokati'
+        | 'Patuakhali'
+        | 'Pirojpur'
+        | 'Bandarban'
+        | 'Brahmanbaria'
+        | 'Chandpur'
+        | 'Chattogram'
+        | "Cox's Bazar"
+        | 'Cumilla'
+        | 'Feni'
+        | 'Khagrachari'
+        | 'Lakshmipur'
+        | 'Noakhali'
+        | 'Rangamati'
+        | 'Dhaka'
+        | 'Faridpur'
+        | 'Gazipur'
+        | 'Gopalganj'
+        | 'Kishoreganj'
+        | 'Madaripur'
+        | 'Manikganj'
+        | 'Munshiganj'
+        | 'Narayanganj'
+        | 'Narsingdi'
+        | 'Rajbari'
+        | 'Shariatpur'
+        | 'Tangail'
+        | 'Bagerhat'
+        | 'Chuadanga'
+        | 'Jashore'
+        | 'Jhenaidah'
+        | 'Khulna'
+        | 'Kushtia'
+        | 'Magura'
+        | 'Meherpur'
+        | 'Narail'
+        | 'Satkhira'
+        | 'Jamalpur'
+        | 'Mymensingh'
+        | 'Netrokona'
+        | 'Sherpur'
+        | 'Bogura'
+        | 'Joypurhat'
+        | 'Naogaon'
+        | 'Natore'
+        | 'Chapai Nawabganj'
+        | 'Pabna'
+        | 'Rajshahi'
+        | 'Sirajganj'
+        | 'Dinajpur'
+        | 'Gaibandha'
+        | 'Kurigram'
+        | 'Lalmonirhat'
+        | 'Nilphamari'
+        | 'Panchagarh'
+        | 'Rangpur'
+        | 'Thakurgaon'
+        | 'Habiganj'
+        | 'Moulvibazar'
+        | 'Sunamganj'
+        | 'Sylhet'
+      )
+    | null;
+  summary?: string | null;
+  mediaLinks?:
+    | {
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  lat?: number | null;
+  lng?: number | null;
+  date: string;
+  graphicLevel?: ('Moderate' | 'Severe' | 'None') | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

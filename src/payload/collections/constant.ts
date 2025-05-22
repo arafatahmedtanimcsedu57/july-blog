@@ -1,4 +1,9 @@
-export const districts = [
+export type Option = {
+  label: string
+  value: string
+}
+
+export const districts: Option[] = [
   { label: 'Barguna', value: 'Barguna' },
   { label: 'Barisal', value: 'Barisal' },
   { label: 'Bhola', value: 'Bhola' },
@@ -63,26 +68,26 @@ export const districts = [
   { label: 'Moulvibazar', value: 'Moulvibazar' },
   { label: 'Sunamganj', value: 'Sunamganj' },
   { label: 'Sylhet', value: 'Sylhet' },
-] as const
+]
 
-export const genders = [
+export const genders: Option[] = [
   { label: 'Male', value: 'male' },
   { label: 'Female', value: 'female' },
   { label: 'Other', value: 'other' },
-] as const
+]
 
-export const incidentTypes = [
+export const incidentTypes: Option[] = [
   { label: 'Injury', value: 'Injury' },
   { label: 'Death', value: 'Death' },
-] as const
+]
 
-export const graphicLevels = [
+export const graphicLevels: Option[] = [
   { label: 'Moderate', value: 'Moderate' },
   { label: 'Severe', value: 'Severe' },
   { label: 'None', value: 'None' },
-] as const
+]
 
-export const userTypes = [
+export const userTypes: Option[] = [
   {
     label: 'admin',
     value: 'admin',
@@ -91,4 +96,4 @@ export const userTypes = [
     label: 'user',
     value: 'user',
   },
-] as const
+]
