@@ -18,10 +18,10 @@ const CategoriesCollection: CollectionConfig = {
 }
 
 export interface Category {
+  createdAt: string
   id: string
   title?: string
   updatedAt: string
-  createdAt: string
 }
 
 export default CategoriesCollection

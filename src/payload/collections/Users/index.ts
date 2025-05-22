@@ -4,6 +4,7 @@ import { email as validateEmail } from 'payload/dist/fields/validations'
 
 import { admins } from '../../access/admins'
 import { adminEmail } from '../../cron/shared'
+import { userTypes } from '../constant'
 import { checkRole } from './checkRole'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 import { loginAfterCreate } from './hooks/loginAfterCreate'
@@ -49,16 +50,7 @@ const Users: CollectionConfig = {
       hooks: {
         beforeChange: [ensureFirstUserIsAdmin],
       },
-      options: [
-        {
-          label: 'admin',
-          value: 'admin',
-        },
-        {
-          label: 'user',
-          value: 'user',
-        },
-      ],
+      options: [...userTypes],
       type: 'select',
     },
   ],
