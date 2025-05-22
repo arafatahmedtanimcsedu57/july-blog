@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+// import Link from 'next/link'
 import React from 'react'
 
 import type { Header as HeaderType } from '../../../../payload/payload-types'
@@ -27,7 +27,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      {user && <Link href="/account">Account</Link>}
+      {/* {user && <Link href="/account">Account</Link>} */}
       {/*
         // Uncomment this code if you want to add a login link to the header
         {!user && (
