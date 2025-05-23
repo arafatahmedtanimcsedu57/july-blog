@@ -1,8 +1,10 @@
 import type { CollectionConfig } from 'payload/types'
 
+import { admins } from '../access/admins'
+
 const CategoriesCollection: CollectionConfig = {
   access: {
-    delete: () => false,
+    delete: admins,
     read: () => true,
   },
   admin: {
