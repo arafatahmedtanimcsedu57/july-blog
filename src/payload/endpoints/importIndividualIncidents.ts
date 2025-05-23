@@ -44,21 +44,21 @@ const importIndividualIncidents: Endpoint = {
         }
 
         const incident: Partial<IndividualIncident> = {
-          name: row.name,
+          name: row.name ? row.name : undefined,
           age: row.age ? Number(row.age) : undefined,
-          date: dateValue,
-          district: row.district === '' ? undefined : row.district,
-          gender: row.gender === '' ? undefined : row.gender,
+          date: dateValue ? dateValue : undefined,
+          district: row.district ? row.district : undefined,
+          gender: row.gender ? row.gender : undefined,
           graphicLevel: row.graphicLevel || null,
           lat: row.lat ? Number(row.lat) : undefined,
           lng: row.lng ? Number(row.lng) : undefined,
-          location: row.location,
+          location: row.location ? row.location : undefined,
           mediaLinks: row.mediaLinks
             ? row.mediaLinks.split('|').map((url: string) => ({ url: url.trim() }))
             : [],
-          occupation: row.occupation,
-          summary: row.summary,
-          type: row.type,
+          occupation: row.occupation ? row.occupation : undefined,
+          summary: row.summary ? row.summary : undefined,
+          type: row.type ? row.type : undefined,
         }
 
         // Create entry in Payload

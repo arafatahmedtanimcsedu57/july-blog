@@ -25,7 +25,7 @@ const IndividualIncident: CollectionConfig = {
   fields: [
     {
       name: 'name',
-      required: true,
+      required: false,
       type: 'text',
     },
     {
@@ -98,7 +98,7 @@ const IndividualIncident: CollectionConfig = {
         },
         description: 'Select a date. Will be stored as a date (ISO string).',
       },
-      required: true,
+      required: false,
       type: 'date',
     },
     {

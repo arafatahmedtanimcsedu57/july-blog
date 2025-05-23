@@ -2,13 +2,17 @@ import type { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
 import type { Config } from '../../payload/payload-types'
 
+import { FILMS } from '../_graphql/films'
 import { PAGES } from '../_graphql/pages'
 import { POSTS } from '../_graphql/posts'
 import { PROJECTS } from '../_graphql/projects'
 import { payloadToken } from './token'
-import { FILMS } from '../_graphql/films'
 
 const queryMap = {
+  films: {
+    key: 'Films',
+    query: FILMS,
+  },
   pages: {
     key: 'Pages',
     query: PAGES,
@@ -20,10 +24,6 @@ const queryMap = {
   projects: {
     key: 'Projects',
     query: PROJECTS,
-  },
-  films: {
-    key: 'Films',
-    query: FILMS,
   },
 }
 
