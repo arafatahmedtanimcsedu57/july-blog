@@ -44,7 +44,7 @@ export const hero: Field = {
       editor: lexicalEditor({
         features: [
           ParagraphFeature(),
-          HeadingFeature({ enabledHeadingSizes: ['h1'] }),
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }),
           LinkFeature({}),
           LabelFeature(),
           LargeBodyFeature(),

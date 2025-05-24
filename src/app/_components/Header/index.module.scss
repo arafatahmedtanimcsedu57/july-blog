@@ -20,14 +20,15 @@
 }
 
 .logo {
-  width: 3rem;
+  width: 1.5rem;
 }
 
 .brand {
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
   font-weight: 600;
-  max-width: 100px;
+  max-width: 80px;
+  margin: 0;
 }
 
 // :global([data-theme="light"]) {

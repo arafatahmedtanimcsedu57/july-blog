@@ -29,11 +29,6 @@ export async function Header() {
       <header className={classes.header}>
         <Gutter className={classes.wrap}>
           <Link className={classes.wrap} href="/">
-            {/* Cannot use the `<picture>` element here with `srcSet`
-              This is because the theme is able to be overridden by the user
-              And so `@media (prefers-color-scheme: dark)` will not work
-              Instead, we just use CSS to invert the color via `filter: invert(1)` based on `[data-theme="dark"]`
-            */}
             <img alt="MONSOON PROTEST ARCHIVES LOGO" className={classes.logo} src="logo.png" />
             <p className={classes.brand}>MONSOON PROTEST ARCHIVES</p>
           </Link>

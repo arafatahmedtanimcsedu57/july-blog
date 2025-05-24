@@ -1,1 +1,1 @@
-.nav{display:flex;gap:calc(var(--base)/4) var(--base);align-items:center;flex-wrap:wrap;opacity:1;transition:opacity 100ms linear;visibility:visible}.nav>*{text-decoration:none}.hide{opacity:0;visibility:hidden}
+.nav{display:flex;gap:calc(var(--base)/4) var(--base);align-items:center;flex-wrap:wrap;opacity:1;transition:opacity 100ms linear;visibility:visible;font-size:14px;font-weight:600}.nav>*{text-decoration:none}.hide{opacity:0;visibility:hidden}

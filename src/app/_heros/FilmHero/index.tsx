@@ -51,17 +51,19 @@ export const FilmHero: React.FC<{
             </p>
           </div> */}
         </div>
-        <div className={classes.media}>
-          <div className={classes.mediaWrapper}>
-            {!metaImage && <div className={classes.placeholder}>No image</div>}
-            {metaImage && typeof metaImage !== 'string' && (
-              <Media fill imgClassName={classes.image} priority resource={metaImage} />
+        {metaImage && (
+          <div className={classes.media}>
+            <div className={classes.mediaWrapper}>
+              {!metaImage && <div className={classes.placeholder}>No image</div>}
+              {metaImage && typeof metaImage !== 'string' && (
+                <Media fill imgClassName={classes.image} priority resource={metaImage} />
+              )}
+            </div>
+            {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
+              <RichText className={classes.caption} content={metaImage.caption} />
             )}
           </div>
-          {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
-            <RichText className={classes.caption} content={metaImage.caption} />
-          )}
-        </div>
+        )}
       </Gutter>
     </Fragment>
   )

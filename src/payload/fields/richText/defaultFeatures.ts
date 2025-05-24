@@ -6,10 +6,10 @@ import {
   HeadingFeature,
   ItalicTextFeature,
   LinkFeature,
+  OrderedListFeature,
   ParagraphFeature,
   UnderlineTextFeature,
   UnorderedListFeature,
-  OrderedListFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { LabelFeature } from '../lexicalFeatures/label'
@@ -22,7 +22,7 @@ export const defaultPublicDemoFeatures: FeatureProvider[] = [
   UnderlineTextFeature(),
   BlockQuoteFeature(),
   HeadingFeature({
-    enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6'],
+    enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
   }),
   LinkFeature({}),
   LargeBodyFeature(),
