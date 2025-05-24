@@ -87,8 +87,8 @@ export default buildConfig({
     Comments,
     IndividualIncident,
   ],
-  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
-  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ''].filter(Boolean),
+  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
+  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
   editor: lexicalEditor({}),
   endpoints: [resetDBEndpoint, seedDBEndpoint, clearDBEndpoint, importIndividualIncidents],
   globals: [Settings, Header, Footer],
@@ -110,6 +110,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI,
   }),
   // database-adapter-config-end
+
   plugins: [
     // formBuilder({}),
     redirects({
