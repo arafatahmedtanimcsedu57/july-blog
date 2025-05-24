@@ -30,8 +30,6 @@ export default async function Film({ params: { slug } }) {
     console.error(error) // eslint-disable-line no-console
   }
 
-  console.log('PAGE', film)
-
   if (!film) {
     notFound()
   }

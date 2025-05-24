@@ -54,7 +54,7 @@ export const Card: React.FC<{
         {showCategories && hasCategories && (
           <div className={classes.leader}>
             {showCategories && hasCategories && (
-              <div>
+              <div className={classes.category}>
                 {categories?.map((category, index) => {
                   const { title: titleFromCategory } = category as Category
 
@@ -64,7 +64,7 @@ export const Card: React.FC<{
 
                   return (
                     <Fragment key={index}>
-                      {categoryTitle}
+                      <span>{categoryTitle}</span>
                       {!isLast && <Fragment>, &nbsp;</Fragment>}
                     </Fragment>
                   )
@@ -74,11 +74,11 @@ export const Card: React.FC<{
           </div>
         )}
         {titleToUse && (
-          <h4 className={classes.title}>
+          <p className={classes.title}>
             <Link className={classes.titleLink} href={href}>
               {titleToUse}
             </Link>
-          </h4>
+          </p>
         )}
         {description && (
           <div className={classes.body}>
