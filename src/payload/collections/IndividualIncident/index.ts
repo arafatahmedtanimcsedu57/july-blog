@@ -10,8 +10,8 @@ import { locationCoordinates } from './hooks/locationCoordinates'
 const IndividualIncident: CollectionConfig = {
   access: {
     create: admins,
-    delete: () => true,
-    read: adminsOrPublished,
+    delete: admins,
+    read: () => true,
     update: admins,
   },
   admin: {
