@@ -17,7 +17,8 @@ export interface Config {
     users: User;
     comments: Comment;
     'individual-incidents': IndividualIncident;
-    'District-incidents': DistrictIncident;
+    'district-incidents': DistrictIncident;
+    'hospital-incidents': HospitalIncident;
     redirects: Redirect;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -1213,7 +1214,7 @@ export interface IndividualIncident {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "District-incidents".
+ * via the `definition` "district-incidents".
  */
 export interface DistrictIncident {
   id: string;
@@ -1282,6 +1283,20 @@ export interface DistrictIncident {
     | 'Moulvibazar'
     | 'Sunamganj'
     | 'Sylhet';
+  verified_injuries: number;
+  verified_deaths: number;
+  lat: number;
+  lng: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hospital-incidents".
+ */
+export interface HospitalIncident {
+  id: string;
+  name: string;
   verified_injuries: number;
   verified_deaths: number;
   lat: number;

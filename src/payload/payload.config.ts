@@ -15,6 +15,7 @@ import Categories from './collections/Categories'
 import Comments from './collections/Comments'
 import DistrictIncident from './collections/DistrictIncident'
 import { Films } from './collections/Films'
+import HospitalIncident from './collections/HospitalIncident'
 import IndividualIncident from './collections/IndividualIncident'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -25,6 +26,7 @@ import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
 import Logo, { Icon } from './components/Logo'
 import importDistrictIncidents from './endpoints/importDistrictIncidents'
+import importHospitalIncidents from './endpoints/importHospitalIncidents'
 import importIndividualIncidents from './endpoints/importIndividualIncidents'
 import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
 import { Footer } from './globals/Footer'
@@ -89,6 +91,7 @@ export default buildConfig({
     Comments,
     IndividualIncident,
     DistrictIncident,
+    HospitalIncident,
   ],
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
@@ -99,6 +102,7 @@ export default buildConfig({
     clearDBEndpoint,
     importIndividualIncidents,
     importDistrictIncidents,
+    importHospitalIncidents,
   ],
   globals: [Settings, Header, Footer],
   graphQL: {
