@@ -13,6 +13,7 @@ import { buildConfig } from 'payload/config'
 
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
+import DistrictIncident from './collections/DistrictIncident'
 import { Films } from './collections/Films'
 import IndividualIncident from './collections/IndividualIncident'
 import { Media } from './collections/Media'
@@ -23,6 +24,7 @@ import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
 import Logo, { Icon } from './components/Logo'
+import importDistrictIncidents from './endpoints/importDistrictIncidents'
 import importIndividualIncidents from './endpoints/importIndividualIncidents'
 import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/resetDB'
 import { Footer } from './globals/Footer'
@@ -86,11 +88,18 @@ export default buildConfig({
     Users,
     Comments,
     IndividualIncident,
+    DistrictIncident,
   ],
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
   editor: lexicalEditor({}),
-  endpoints: [resetDBEndpoint, seedDBEndpoint, clearDBEndpoint, importIndividualIncidents],
+  endpoints: [
+    resetDBEndpoint,
+    seedDBEndpoint,
+    clearDBEndpoint,
+    importIndividualIncidents,
+    importDistrictIncidents,
+  ],
   globals: [Settings, Header, Footer],
   graphQL: {
     disablePlaygroundInProduction: false,

@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { admins } from '../../access/admins'
-import { adminsOrPublished } from '../../access/adminsOrPublished'
 import BeforeIndividualIncident from '../../components/BeforeIndividualIncident'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { districts, genders, graphicLevels, incidentTypes } from '../constant'
@@ -46,6 +45,7 @@ const IndividualIncident: CollectionConfig = {
     },
     {
       name: 'type',
+      label: 'Incident Type',
       options: [...incidentTypes],
       required: true,
       type: 'select',
@@ -81,11 +81,13 @@ const IndividualIncident: CollectionConfig = {
     },
     {
       name: 'lat',
+      label: 'Latitude',
       required: false,
       type: 'number',
     },
     {
       name: 'lng',
+      label: 'longitude',
       required: false,
       type: 'number',
     },

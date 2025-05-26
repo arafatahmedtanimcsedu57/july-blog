@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 import './index.scss'
 
-const BeforeIndividualIncident: React.FC = () => {
+const BeforeDistrictIncident: React.FC = () => {
   const [file, setFile] = useState<File | null>(null)
   const [message, setMessage] = useState<null | string>(null)
   const [loading, setLoading] = useState(false)
@@ -28,7 +28,7 @@ const BeforeIndividualIncident: React.FC = () => {
     formData.append('csv', file)
 
     try {
-      const res = await fetch('/api/import-individual-incidents', {
+      const res = await fetch('/api/import-district-incidents', {
         body: formData,
         method: 'POST',
       })
@@ -47,7 +47,7 @@ const BeforeIndividualIncident: React.FC = () => {
 
   return (
     <div className="before-incident">
-      <h4>Import Individual Incidents from CSV</h4>
+      <h4>Import District Incidents from CSV</h4>
       <form className="form form__incident" onSubmit={handleSubmit}>
         <input
           accept=".csv"
@@ -76,4 +76,4 @@ const BeforeIndividualIncident: React.FC = () => {
   )
 }
 
-export default BeforeIndividualIncident
+export default BeforeDistrictIncident
