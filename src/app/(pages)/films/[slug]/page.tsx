@@ -20,6 +20,7 @@ export default async function Film({ params: { slug } }) {
 
   let film: Film | null = null
 
+  console.log(slug)
   try {
     film = await fetchDoc<Film>({
       collection: 'films',

@@ -16,7 +16,7 @@ import { revalidatePage } from './hooks/revalidatePage'
 export const Pages: CollectionConfig = {
   access: {
     create: admins,
-    delete: () => false,
+    delete: admins,
     read: adminsOrPublished,
     update: admins,
   },

@@ -6,17 +6,13 @@ import { FILM } from '../_graphql/films'
 import { PAGE } from '../_graphql/pages'
 import { POST } from '../_graphql/posts'
 import { PROJECT } from '../_graphql/projects'
-import { payloadToken } from './token'
 import { STUDY } from '../_graphql/studies'
+import { payloadToken } from './token'
 
 const queryMap = {
   films: {
     key: 'Films',
     query: FILM,
-  },
-  studies: {
-    key: 'Studies',
-    query: STUDY,
   },
   pages: {
     key: 'Pages',
@@ -30,6 +26,10 @@ const queryMap = {
     key: 'Projects',
     query: PROJECT,
   },
+  studies: {
+    key: 'Studies',
+    query: STUDY,
+  },
 }
 
 export const fetchDoc = async <T>(args: {
@@ -39,7 +39,7 @@ export const fetchDoc = async <T>(args: {
   slug?: string
 }): Promise<T> => {
   const { collection, draft, slug } = args || {}
-
+  console.log(collection, draft, slug)
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined
