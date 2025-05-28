@@ -10,7 +10,6 @@ import { fetchDoc } from '../../_api/fetchDoc'
 import { ContentBlock } from '../../_blocks/Content'
 import { Gutter } from '../../_components/Gutter'
 import { TimelineHero } from '../../_heros/TimelineHero'
-import { generateMeta } from '../../_utilities/generateMeta'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import classes from './index.module.scss'
 
