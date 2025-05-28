@@ -24,7 +24,7 @@ export default async function Timeline({ params: { slug } }) {
     timeline = await fetchDoc<Page>({
       collection: 'pages',
       draft: isDraftMode,
-      slug,
+      slug: 'timeline',
     })
   } catch (error) {
     console.error(error) // eslint-disable-line no-console
