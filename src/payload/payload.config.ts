@@ -32,6 +32,7 @@ import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/re
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
+import { Studies } from './collections/Studies'
 
 const generateTitle: GenerateTitle = () => {
   return 'MONSOON PROTEST ARCHIVES'
@@ -92,6 +93,7 @@ export default buildConfig({
     IndividualIncident,
     DistrictIncident,
     HospitalIncident,
+    Studies,
   ],
   cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || '', 'http://localhost:3001'].filter(Boolean),
@@ -133,7 +135,7 @@ export default buildConfig({
       collections: ['categories'],
     }),
     seo({
-      collections: ['pages', 'posts', 'projects', 'films'],
+      collections: ['pages', 'posts', 'projects', 'films', 'studies'],
       generateTitle,
       uploadsCollection: 'media',
     }),

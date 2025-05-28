@@ -7,11 +7,16 @@ import { PAGE } from '../_graphql/pages'
 import { POST } from '../_graphql/posts'
 import { PROJECT } from '../_graphql/projects'
 import { payloadToken } from './token'
+import { STUDY } from '../_graphql/studies'
 
 const queryMap = {
   films: {
     key: 'Films',
     query: FILM,
+  },
+  studies: {
+    key: 'Studies',
+    query: STUDY,
   },
   pages: {
     key: 'Pages',

@@ -19,6 +19,7 @@ export interface Config {
     'individual-incidents': IndividualIncident;
     'district-incidents': DistrictIncident;
     'hospital-incidents': HospitalIncident;
+    studies: Study;
     redirects: Redirect;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -197,7 +198,7 @@ export interface Page {
           [k: string]: unknown;
         };
         populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects' | 'films') | null;
+        relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
         categories?: (string | Category)[] | null;
         limit?: number | null;
         selectedDocs?:
@@ -214,6 +215,10 @@ export interface Page {
                   relationTo: 'films';
                   value: string | Film;
                 }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
             )[]
           | null;
         populatedDocs?:
@@ -229,6 +234,10 @@ export interface Page {
               | {
                   relationTo: 'films';
                   value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
                 }
             )[]
           | null;
@@ -476,7 +485,7 @@ export interface Post {
           [k: string]: unknown;
         };
         populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects' | 'films') | null;
+        relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
         categories?: (string | Category)[] | null;
         limit?: number | null;
         selectedDocs?:
@@ -493,6 +502,10 @@ export interface Post {
                   relationTo: 'films';
                   value: string | Film;
                 }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
             )[]
           | null;
         populatedDocs?:
@@ -508,6 +521,10 @@ export interface Post {
               | {
                   relationTo: 'films';
                   value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
                 }
             )[]
           | null;
@@ -621,7 +638,7 @@ export interface Post {
               [k: string]: unknown;
             };
             populateBy?: ('collection' | 'selection') | null;
-            relationTo?: ('posts' | 'projects' | 'films') | null;
+            relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
             categories?: (string | Category)[] | null;
             limit?: number | null;
             selectedDocs?:
@@ -638,6 +655,10 @@ export interface Post {
                       relationTo: 'films';
                       value: string | Film;
                     }
+                  | {
+                      relationTo: 'studies';
+                      value: string | Study;
+                    }
                 )[]
               | null;
             populatedDocs?:
@@ -653,6 +674,10 @@ export interface Post {
                   | {
                       relationTo: 'films';
                       value: string | Film;
+                    }
+                  | {
+                      relationTo: 'studies';
+                      value: string | Study;
                     }
                 )[]
               | null;
@@ -845,7 +870,7 @@ export interface Project {
           [k: string]: unknown;
         };
         populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects' | 'films') | null;
+        relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
         categories?: (string | Category)[] | null;
         limit?: number | null;
         selectedDocs?:
@@ -862,6 +887,10 @@ export interface Project {
                   relationTo: 'films';
                   value: string | Film;
                 }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
             )[]
           | null;
         populatedDocs?:
@@ -877,6 +906,10 @@ export interface Project {
               | {
                   relationTo: 'films';
                   value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
                 }
             )[]
           | null;
@@ -1049,7 +1082,7 @@ export interface Film {
           [k: string]: unknown;
         };
         populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects' | 'films') | null;
+        relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
         categories?: (string | Category)[] | null;
         limit?: number | null;
         selectedDocs?:
@@ -1065,6 +1098,10 @@ export interface Film {
               | {
                   relationTo: 'films';
                   value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
                 }
             )[]
           | null;
@@ -1082,6 +1119,10 @@ export interface Film {
                   relationTo: 'films';
                   value: string | Film;
                 }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
             )[]
           | null;
         populatedDocsTotal?: number | null;
@@ -1091,6 +1132,218 @@ export interface Film {
       }
   )[];
   relatedFilms?: (string | Film)[] | null;
+  slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "studies".
+ */
+export interface Study {
+  id: string;
+  title: string;
+  categories?: (string | Category)[] | null;
+  publishedDate?: string | null;
+  hero: {
+    richText: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    media?: string | Media | null;
+  };
+  layout: (
+    | {
+        invertBackground?: boolean | null;
+        richText: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        links?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?: {
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null;
+                url?: string | null;
+                label: string;
+                appearance?: ('primary' | 'secondary') | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'cta';
+      }
+    | {
+        invertBackground?: boolean | null;
+        columns?:
+          | {
+              size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+              richText: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              enableLink?: boolean | null;
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?: {
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null;
+                url?: string | null;
+                label: string;
+                appearance?: ('default' | 'primary' | 'secondary') | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'content';
+      }
+    | {
+        invertBackground?: boolean | null;
+        mediaPosition?: ('left' | 'right') | null;
+        richText: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        media: string | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contentMedia';
+      }
+    | {
+        invertBackground?: boolean | null;
+        position?: ('default' | 'fullscreen') | null;
+        media: string | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mediaBlock';
+      }
+    | {
+        introContent: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        populateBy?: ('collection' | 'selection') | null;
+        relationTo?: ('posts' | 'projects' | 'films' | 'studies') | null;
+        categories?: (string | Category)[] | null;
+        limit?: number | null;
+        selectedDocs?:
+          | (
+              | {
+                  relationTo: 'posts';
+                  value: string | Post;
+                }
+              | {
+                  relationTo: 'projects';
+                  value: string | Project;
+                }
+              | {
+                  relationTo: 'films';
+                  value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
+            )[]
+          | null;
+        populatedDocs?:
+          | (
+              | {
+                  relationTo: 'posts';
+                  value: string | Post;
+                }
+              | {
+                  relationTo: 'projects';
+                  value: string | Project;
+                }
+              | {
+                  relationTo: 'films';
+                  value: string | Film;
+                }
+              | {
+                  relationTo: 'studies';
+                  value: string | Study;
+                }
+            )[]
+          | null;
+        populatedDocsTotal?: number | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'archive';
+      }
+  )[];
+  relatedStudies?: (string | Study)[] | null;
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -1370,6 +1623,7 @@ export interface Settings {
   postsPage?: (string | null) | Page;
   projectsPage?: (string | null) | Page;
   filmsPage?: (string | null) | Page;
+  studiesPage?: (string | null) | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

@@ -23,6 +23,12 @@ export const Settings: GlobalConfig = {
       relationTo: 'pages',
       type: 'relationship',
     },
+    {
+      name: 'studiesPage',
+      label: 'Studies page',
+      relationTo: 'pages',
+      type: 'relationship',
+    },
   ],
   graphQL: {
     name: 'Settings',

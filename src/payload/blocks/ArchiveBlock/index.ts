@@ -43,6 +43,10 @@ export const Archive: Block = {
           label: 'Films',
           value: 'films',
         },
+        {
+          label: 'Studies',
+          value: 'studies',
+        },
       ],
       type: 'select',
     },
@@ -73,7 +77,7 @@ export const Archive: Block = {
       },
       hasMany: true,
       label: 'Selection',
-      relationTo: ['posts', 'projects', 'films'],
+      relationTo: ['posts', 'projects', 'films', 'studies'],
       type: 'relationship',
     },
     {
@@ -85,7 +89,7 @@ export const Archive: Block = {
       },
       hasMany: true,
       label: 'Populated Docs',
-      relationTo: ['posts', 'projects', 'films'],
+      relationTo: ['posts', 'projects', 'films', 'studies'],
       type: 'relationship',
     },
     {
