@@ -1463,6 +1463,7 @@ export interface IndividualIncident {
   date?: string | null;
   graphicLevel?: ('Moderate' | 'Severe' | 'None') | null;
   archiveCode?: string | null;
+  photo?: string | Media | null;
   updatedAt: string;
   createdAt: string;
 }

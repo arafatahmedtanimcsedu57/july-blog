@@ -58,6 +58,7 @@ const importIndividualIncidents: Endpoint = {
             ? row.mediaLinks.split('|').map((url: string) => ({ url: url.trim() }))
             : [],
           occupation: row.occupation ? row.occupation : undefined,
+          photo: row.photo ? row.photo : undefined,
           summary: row.summary ? row.summary : undefined,
           type: row.type ? row.type : undefined,
         }

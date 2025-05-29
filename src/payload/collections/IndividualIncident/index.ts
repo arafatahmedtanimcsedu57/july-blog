@@ -114,6 +114,13 @@ const IndividualIncident: CollectionConfig = {
       required: false,
       type: 'text',
     },
+    {
+      name: 'photo',
+      label: 'Photo',
+      relationTo: 'media',
+      required: false,
+      type: 'upload',
+    },
   ],
   hooks: {
     beforeChange: [populatePublishedDate, locationCoordinates],
