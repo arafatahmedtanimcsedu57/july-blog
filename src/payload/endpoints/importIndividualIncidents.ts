@@ -46,6 +46,7 @@ const importIndividualIncidents: Endpoint = {
         const incident: Partial<IndividualIncident> = {
           name: row.name ? row.name : undefined,
           age: row.age ? Number(row.age) : undefined,
+          archiveCode: row.archiveCode ? row.archiveCode : undefined,
           date: dateValue ? dateValue : undefined,
           district: row.district ? row.district : undefined,
           gender: row.gender ? row.gender : undefined,

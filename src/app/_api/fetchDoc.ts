@@ -39,7 +39,6 @@ export const fetchDoc = async <T>(args: {
   slug?: string
 }): Promise<T> => {
   const { collection, draft, slug } = args || {}
-  console.log(collection, draft, slug)
   if (!queryMap[collection]) throw new Error(`Collection ${collection} not found`)
 
   let token: RequestCookie | undefined

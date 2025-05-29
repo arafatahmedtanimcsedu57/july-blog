@@ -109,6 +109,11 @@ const IndividualIncident: CollectionConfig = {
       required: false,
       type: 'select',
     },
+    {
+      name: 'archiveCode',
+      required: false,
+      type: 'text',
+    },
   ],
   hooks: {
     beforeChange: [populatePublishedDate, locationCoordinates],

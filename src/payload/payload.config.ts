@@ -21,6 +21,7 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
+import { Studies } from './collections/Studies'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import BeforeLogin from './components/BeforeLogin'
@@ -32,7 +33,6 @@ import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/re
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-import { Studies } from './collections/Studies'
 
 const generateTitle: GenerateTitle = () => {
   return 'MONSOON PROTEST ARCHIVES'

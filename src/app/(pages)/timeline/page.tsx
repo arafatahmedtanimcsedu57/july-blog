@@ -19,7 +19,6 @@ export default async function Timeline({ params: { slug } }) {
   const { isEnabled: isDraftMode } = draftMode()
 
   let timeline: Page | null = null
-  console.log(slug)
   try {
     timeline = await fetchDoc<Page>({
       collection: 'pages',
@@ -30,7 +29,6 @@ export default async function Timeline({ params: { slug } }) {
     console.error(error) // eslint-disable-line no-console
   }
 
-  console.log(timeline)
   if (!timeline) {
     notFound()
   }
