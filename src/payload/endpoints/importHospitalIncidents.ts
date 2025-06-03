@@ -31,7 +31,7 @@ const importHospitalIncidents: Endpoint = {
         const incident: Partial<HospitalIncident> = {
           name: row.name,
           lat: row.lat ? row.lat : 0,
-          lng: row.lng ? row.lat : 0,
+          lng: row.lng ? row.lng : 0,
           verified_deaths: row.verified_deaths,
           verified_injuries: row.verified_injuries,
         }
