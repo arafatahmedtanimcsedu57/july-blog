@@ -1,24 +1,28 @@
-version: '3.8'
+version: '3'
 
 services:
   payload:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: node:20-alpine
     ports:
-      - '3000:3000'
-    env_file:
-      - .env
+      - '3001:3001'
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app/
+    command: sh -c "yarn install && yarn dev"
     depends_on:
       - mongo
+    env_file:
+      - .env
 
   mongo:
     image: mongo:latest
     ports:
       - '27017:27017'
-    command: ['--storageEngine=wiredTiger']
+    command:
+      - --storageEngine=wiredTiger
     volumes:
-      - mongo_data:/data/db
+      - /home/alwyzon/data:/data/db
 
 volumes:
-  mongo_data:
+  node_modules:
