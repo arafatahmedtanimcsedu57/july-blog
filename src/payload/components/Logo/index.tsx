@@ -1,12 +1,11 @@
 import React from 'react'
 
-import LogoImg from './assets/logo.png'
 import './index.scss'
 
 const Logo: React.FC = () => {
   return (
     <div className="wrap__logo">
-      <img alt="MONSOON PROTEST ARCHIVES LOGO" className="logo" src={LogoImg as any} />
+      <img alt="MONSOON PROTEST ARCHIVES LOGO" className="logo" src="/logo.png" />
 
       <p className="brand">MONSOON PROTEST ARCHIVES</p>
     </div>
@@ -16,7 +15,7 @@ const Logo: React.FC = () => {
 export const Icon: React.FC = () => {
   return (
     <div className="wrap__icon">
-      <img alt="MONSOON PROTEST ARCHIVES LOGO" className="logo" src={LogoImg as any} />
+      <img alt="MONSOON PROTEST ARCHIVES LOGO" className="logo" src="/logo.png" />
     </div>
   )
 }
