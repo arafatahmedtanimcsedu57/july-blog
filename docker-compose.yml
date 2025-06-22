@@ -4,7 +4,7 @@ services:
   payload:
     image: node:18-alpine
     ports:
-      - '3000:3000'
+      - '3001:3001'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
@@ -22,10 +22,7 @@ services:
     command:
       - --storageEngine=wiredTiger
     volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - /home/alwyzon/data:/data/db
 
 volumes:
-  data:
   node_modules:
