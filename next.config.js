@@ -41,11 +41,11 @@ const nextConfig = {
     return headers
   },
   images: {
-   remotePatterns: [
+    remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '94.177.8.118',
-        port: '3001',
+        protocol: process.env.NEXT_PUBLIC_SERVER_PROTOCOL,
+        hostname: process.env.NEXT_PUBLIC_SERVER_HOST,
+        port: process.env.NEXT_PUBLIC_SERVER_PORT,
         pathname: '/media/**',
       },
     ],

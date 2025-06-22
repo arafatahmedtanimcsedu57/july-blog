@@ -28,7 +28,8 @@ export const Media: CollectionConfig = {
     },
   ],
   slug: 'media',
-  upload: {
-    staticDir: path.resolve(__dirname, '../../../media'),
-  },
+  upload:
+    process.env.NODE_ENV === 'production'
+      ? true // defer to S3 plugin
+      : { staticDir: path.resolve(__dirname, '../../../media') },
 }
