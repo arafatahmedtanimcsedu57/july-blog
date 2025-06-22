@@ -41,7 +41,7 @@ const nextConfig = {
     return headers
   },
   images: {
-    domains: ['localhost', process.env.NEXT_PUBLIC_SERVER_URL]
+    domains: ['localhost', '94.177.8.118']
       .filter(Boolean)
       .map((url) => url.replace(/https?:\/\//, '')),
   },
