@@ -33,8 +33,8 @@ import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/re
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-import { s3Storage } from '@payloadcms/storage-s3'
-
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 // Ensure S3_ENDPOINT, S3_ACCESS_KEY_ID, S3_SECRET, and S3_BUCKET environment variables are set
 
 const generateTitle: GenerateTitle = () => {
@@ -143,18 +143,21 @@ export default buildConfig({
       uploadsCollection: 'media',
     }),
     payloadCloud(),
-    s3Storage({
+    cloudStorage({
       collections: {
-        media: true, // Apply storage to 'media' collection
-      },
-      bucket: process.env.S3_BUCKET || '',
-      config: {
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-          secretAccessKey: process.env.S3_SECRET || '',
+        media: {
+          adapter: s3Adapter({
+            config: {
+              endpoint: process.env.S3_ENDPOINT,
+              region: process.env.S3_REGION || 'auto',
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+                secretAccessKey: process.env.S3_SECRET || '',
+              },
+            },
+            bucket: process.env.S3_BUCKET || '',
+          }),
         },
-        region: 'auto', // Cloudflare R2 uses 'auto' as the region
-        endpoint: process.env.S3_ENDPOINT || '',
       },
     }),
   ],
