@@ -1,4 +1,4 @@
-FROM node:22-alpine as base
+FROM node:20-alpine as base
 
 ENV NODE_ENV=production
 ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
