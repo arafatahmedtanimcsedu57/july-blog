@@ -14,13 +14,13 @@ const importIndividualIncidents: Endpoint = {
       }
 
       const csvFile = req.files.csv
-      console.log('csvFile:', csvFile)
+    
       // Buffer is available in Node.js, but not in browser. This ensures it's only used server-side.
       const csvBuffer = Array.isArray(csvFile) ? csvFile[0].data : csvFile.data
-      console.log('csvBuffer:', csvBuffer)
+
 
       const csvString = Buffer.from(csvBuffer).toString('utf-8')
-      console.log('csvString:', csvString)
+
       // Parse CSV
       const records = parse(csvString, {
         columns: true,
@@ -67,11 +67,16 @@ const importIndividualIncidents: Endpoint = {
           type: row.type ? row.type : undefined,
         }
 
+        console.log('incident', incident)
+
         // Create entry in Payload
         const createdIncident = await req.payload.create({
           collection: 'individual-incidents',
           data: incident,
-        })
+        } )
+
+        console.log('createdIncident', createdIncident)
+
         created.push(createdIncident as IndividualIncident)
       }
 
