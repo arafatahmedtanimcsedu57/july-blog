@@ -2,7 +2,7 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - "127.0.0.1:27017:27017"
+      - "27017:27017"
     volumes:
       - /home/alwyzon/data:/data/db
     command: ["mongod", "--storageEngine", "wiredTiger"]
