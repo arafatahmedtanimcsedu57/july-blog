@@ -2,8 +2,7 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - "27017:27017"   # bind only localhost
+      - "127.0.0.1:27017:27017"
     volumes:
-      - /home/alwyzon/data:/data/db       # MongoDB data
-      - /home/alwyzon/mongod.conf:/etc/mongod.conf:ro   # your config mounted read-only
-    command: ["mongod", "--config", "/etc/mongod.conf"]
+      - /home/alwyzon/data:/data/db
+    command: ["mongod", "--storageEngine", "wiredTiger"]
