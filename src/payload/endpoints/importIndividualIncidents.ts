@@ -14,10 +14,9 @@ const importIndividualIncidents: Endpoint = {
       }
 
       const csvFile = req.files.csv
-    
+
       // Buffer is available in Node.js, but not in browser. This ensures it's only used server-side.
       const csvBuffer = Array.isArray(csvFile) ? csvFile[0].data : csvFile.data
-
 
       const csvString = Buffer.from(csvBuffer).toString('utf-8')
 
@@ -27,7 +26,6 @@ const importIndividualIncidents: Endpoint = {
         skip_empty_lines: true,
         trim: true,
       })
-      console.log('records:', records)
 
       // Map CSV fields to IndividualIncident schema
       const created: IndividualIncident[] = []
@@ -73,7 +71,7 @@ const importIndividualIncidents: Endpoint = {
         const createdIncident = await req.payload.create({
           collection: 'individual-incidents',
           data: incident,
-        } )
+        })
 
         console.log('createdIncident', createdIncident)
 
