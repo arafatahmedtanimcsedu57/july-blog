@@ -32,13 +32,13 @@ jobs:
             cd /root/july-blog || true
 
             echo "🛑 Stopping any running containers..."
-            pm2 stop 0 || true
+            /root/.nvm/versions/node/v20.19.3/bin/pm2 stop 0 || true
 
             echo "📡 Pulling latest changes from Git repo..."
             git pull || true
 
             echo "🧹 Removing old Docker image (if exists)..."
-            pm2 start 0 || true
+            /root/.nvm/versions/node/v20.19.3/bin/pm2 start 0 || true
 
             # echo "🐳 Building Docker image..."
             # docker build -t july-2025-frontend:latest . || true
