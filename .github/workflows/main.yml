@@ -1,50 +1,46 @@
-name: Nagorik Frontend Deploy
+name: July 2025 Blog
 
 on:
   push:
     branches:
-      - main  # Trigger workflow only on pushes to the 'main' branch
+      - main  # Trigger this workflow only on pushes to the 'main' branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Run the job on the latest Ubuntu environment
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment on GitHub-hosted runner
 
     steps:
-      # Step 1: Install sshpass for password-based SSH authentication
+      # Step 1: Install sshpass to enable SSH with password authentication
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      # Step 2: SSH into the remote server and deploy the app
-      - name: Deploy via SSH with fallback on failure
+      # Step 2: SSH into the remote server and perform the deployment steps
+      - name: Deploy via SSH with PM2
         env:
-          PASSWORD: ${{ secrets.PASSWORD }}  # SSH password
-          PORT: ${{ secrets.PORT }}          # SSH port
-          USERNAME: ${{ secrets.USERNAME }}  # SSH username
-          IP: ${{ secrets.IP }}              # Server IP
+          PASSWORD: ${{ secrets.PASSWORD }}  # SSH password (stored in GitHub Secrets)
+          PORT: ${{ secrets.PORT }}          # SSH port (e.g., 22 or custom)
+          USERNAME: ${{ secrets.USERNAME }}  # SSH username (e.g., root or debian)
+          IP: ${{ secrets.IP }}              # Remote server IP address
         run: |
           sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p "$PORT" "$USERNAME@$IP" << 'EOF'
-            set +e  # Allow script to continue even if one command fails
-
-            echo "🔁 Switching to root user..."
-            sudo su || true
+            set +e  # Continue even if a command fails
 
             echo "📁 Navigating to project directory..."
             cd /root/july-blog || true
 
-            echo "🛑 Stopping any running containers..."
-            /root/.nvm/versions/node/v20.19.3/bin/pm2 stop 0 || true
+            echo "📦 Loading NVM environment (required for Node and PM2)..."
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-            echo "📡 Pulling latest changes from Git repo..."
-            git pull || true
+            echo "🛑 Stopping the PM2 app (if running)..."
+            pm2 stop july-blog || true  # Stop existing app safely
 
-            echo "🧹 Removing old Docker image (if exists)..."
-            /root/.nvm/versions/node/v20.19.3/bin/pm2 start 0 || true
+            echo "📡 Pulling latest code from GitHub..."
+            git pull || true  # Update repo contents
 
-            # echo "🐳 Building Docker image..."
-            # docker build -t july-2025-frontend:latest . || true
+            echo "🚀 Starting or restarting the app via PM2..."
+            pm2 start yarn --name july-blog -- serve || true  # Launch app with PM2 using yarn serve
 
-            # echo "🚀 Starting containers..."
-            # docker compose up -d || true
-
-            echo "✅ Deployment finished (even if partial failures occurred)"
+            echo "✅ Deployment completed successfully."
           EOF
