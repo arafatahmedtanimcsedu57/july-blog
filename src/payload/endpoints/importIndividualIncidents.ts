@@ -14,16 +14,20 @@ const importIndividualIncidents: Endpoint = {
       }
 
       const csvFile = req.files.csv
+      console.log('csvFile:', csvFile)
       // Buffer is available in Node.js, but not in browser. This ensures it's only used server-side.
       const csvBuffer = Array.isArray(csvFile) ? csvFile[0].data : csvFile.data
-      const csvString = Buffer.from(csvBuffer).toString('utf-8')
+      console.log('csvBuffer:', csvBuffer)
 
+      const csvString = Buffer.from(csvBuffer).toString('utf-8')
+      console.log('csvString:', csvString)
       // Parse CSV
       const records = parse(csvString, {
         columns: true,
         skip_empty_lines: true,
         trim: true,
       })
+      console.log('records:', records)
 
       // Map CSV fields to IndividualIncident schema
       const created: IndividualIncident[] = []
