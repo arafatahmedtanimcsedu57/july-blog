@@ -1,46 +1,42 @@
-name: July 2025 Blog
+name: Nagorik Frontend Deploy
 
 on:
   push:
     branches:
-      - main  # Trigger this workflow only on pushes to the 'main' branch
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment on GitHub-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Install sshpass to enable SSH with password authentication
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      # Step 2: SSH into the remote server and perform the deployment steps
-      - name: Deploy via SSH with PM2
+      - name: Deploy to Server
         env:
-          PASSWORD: ${{ secrets.PASSWORD }}  # SSH password (stored in GitHub Secrets)
-          PORT: ${{ secrets.PORT }}          # SSH port (e.g., 22 or custom)
-          USERNAME: ${{ secrets.USERNAME }}  # SSH username (e.g., root or debian)
-          IP: ${{ secrets.IP }}              # Remote server IP address
+          PASSWORD: ${{ secrets.PASSWORD }}
+          PORT: ${{ secrets.PORT }}
+          USERNAME: ${{ secrets.USERNAME }}
+          IP: ${{ secrets.IP }}
         run: |
           sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p "$PORT" "$USERNAME@$IP" << 'EOF'
-            set +e  # Continue even if a command fails
+            set +e
 
-            echo "📁 Navigating to project directory..."
-            cd /root/july-blog || true
+            cd /root/july-blog || exit 1
 
-            echo "📦 Loading NVM environment (required for Node and PM2)..."
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            echo "🔁 Loading NVM"
+            export NVM_DIR="\$HOME/.nvm"
+            [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
 
-            echo "🛑 Stopping the PM2 app (if running)..."
-            pm2 stop july-blog || true  # Stop existing app safely
+            echo "🗑️ Deleting old instance (if any)..."
+            pm2 delete july-blog || true
 
-            echo "📡 Pulling latest code from GitHub..."
-            git pull || true  # Update repo contents
+            echo "📦 Git Pull"
+            git pull || true
 
-            echo "🚀 Starting or restarting the app via PM2..."
-            pm2 start yarn --name july-blog -- serve || true  # Launch app with PM2 using yarn serve
+            echo "🚀 Starting fresh instance"
+            pm2 start yarn --name july-blog -- serve
 
-            echo "✅ Deployment completed successfully."
+            echo "✅ Deployed."
           EOF
