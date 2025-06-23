@@ -8,10 +8,12 @@ import { Blocks } from '../../../_components/Blocks'
 import { FilmHero } from '../../../_heros/FilmHero'
 
 export const FilmClient: React.FC<{ film: Film }> = ({ film: initialFilm }) => {
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
   const { data } = useLivePreview<Film>({
     depth: 1,
     initialData: initialFilm,
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+    serverURL: server_url,
   })
 
   return (

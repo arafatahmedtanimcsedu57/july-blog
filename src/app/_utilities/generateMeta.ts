@@ -9,11 +9,13 @@ export const generateMeta = async (args: {
 }): Promise<Metadata> => {
   const { doc } = args || {}
 
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
   const ogImage =
     typeof doc?.meta?.image === 'object' &&
     doc?.meta?.image !== null &&
     'url' in doc?.meta?.image &&
-    `${process.env.NEXT_PUBLIC_SERVER_URL}${doc.meta.image.url}`
+    `${server_url}${doc.meta.image.url}`
 
   return {
     description: doc?.meta?.description,

@@ -39,7 +39,9 @@ const AccountForm: React.FC = () => {
   const onSubmit = useCallback(
     async (data: FormData) => {
       if (user) {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/${user.id}`, {
+        const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
+        const response = await fetch(`${server_url}/api/users/${user.id}`, {
           // Make sure to include cookies with fetch
           body: JSON.stringify(data),
           credentials: 'include',

@@ -20,6 +20,7 @@ type FormData = {
 export const CommentForm: React.FC<{
   docID: string
 }> = ({ docID }) => {
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
   const pathname = usePathname()
   const [error, setError] = React.useState<null | string>(null)
   const [success, setSuccess] = React.useState<React.ReactNode | null>(null)
@@ -36,9 +37,10 @@ export const CommentForm: React.FC<{
   const onSubmit = useCallback(
     async (data: FormData) => {
       if (!user) return
+      const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/comments`, {
+        const res = await fetch(`${server_url}/api/comments`, {
           body: JSON.stringify({
             // All comments are created as drafts so that they can be moderated before being published
             // Navigate to the admin dashboard and change the comment status to "published" for it to appear on the site
@@ -65,7 +67,7 @@ export const CommentForm: React.FC<{
           <Fragment>
             {'Your comment was submitted for moderation successfully. To approve it, '}
             <Link
-              href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/comments/${
+              href={`${server_url}/admin/collections/comments/${
                 typeof json.doc === 'object' ? json.doc.id : json.doc
               }`}
             >

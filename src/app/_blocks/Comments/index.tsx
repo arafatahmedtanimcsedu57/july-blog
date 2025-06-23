@@ -25,6 +25,7 @@ export type CommentsBlockProps = {
 
 export const CommentsBlock: React.FC<CommentsBlockProps> = (props) => {
   const { comments, doc, introContent } = props
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
   return (
     <div className={classes.commentsBlock}>
@@ -59,9 +60,7 @@ export const CommentsBlock: React.FC<CommentsBlockProps> = (props) => {
                           {
                             'This is a draft comment. You are seeing it because you are an admin. To approve this comment, '
                           }
-                          <Link
-                            href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/comments/${com.id}`}
-                          >
+                          <Link href={`${server_url}/admin/collections/comments/${com.id}`}>
                             navigate to the admin dashboard
                           </Link>
                           {' and click "publish".'}

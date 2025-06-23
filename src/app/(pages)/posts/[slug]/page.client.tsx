@@ -12,10 +12,11 @@ export const PostClient: React.FC<{ comments: Comment[]; post: Post }> = ({
   comments,
   post: initialPost,
 }) => {
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
   const { data } = useLivePreview<Post>({
     depth: 1,
     initialData: initialPost,
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+    serverURL: server_url,
   })
 
   return (

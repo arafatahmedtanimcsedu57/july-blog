@@ -44,7 +44,7 @@ export const FilmHero: React.FC<{
             <p className={classes.description}>
               Disclaimer: This content is fabricated and for demonstration purposes only. To edit
               this film,&nbsp;
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/films/${id}`}>
+              <Link href={`${server_url}/admin/collections/films/${id}`}>
                 navigate to the admin dashboard
               </Link>
               .

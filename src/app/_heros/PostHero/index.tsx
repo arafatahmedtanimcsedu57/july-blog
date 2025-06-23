@@ -20,6 +20,7 @@ export const PostHero: React.FC<{
     publishedOn,
     title,
   } = post
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
   return (
     <Fragment>
@@ -77,7 +78,7 @@ export const PostHero: React.FC<{
             <p>
               Disclaimer: This content is fabricated and for demonstration purposes only. To edit
               this post,&nbsp;
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/posts/${id}`}>
+              <Link href={`${server_url}/admin/collections/posts/${id}`}>
                 navigate to the admin dashboard
               </Link>
               .

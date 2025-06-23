@@ -3,9 +3,10 @@ import type { Footer, Header, Settings } from '../../payload/payload-types'
 import { FOOTER_QUERY, HEADER_QUERY, SETTINGS_QUERY } from '../_graphql/globals'
 
 export async function fetchSettings(): Promise<Settings> {
-  if (!process.env.NEXT_PUBLIC_SERVER_URL) throw new Error('NEXT_PUBLIC_SERVER_URL not found')
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+  if (!server_url) throw new Error('not found')
 
-  const settings = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+  const settings = await fetch(`${server_url}/api/graphql`, {
     body: JSON.stringify({
       query: SETTINGS_QUERY,
     }),
@@ -28,9 +29,10 @@ export async function fetchSettings(): Promise<Settings> {
 }
 
 export async function fetchHeader(): Promise<Header> {
-  if (!process.env.NEXT_PUBLIC_SERVER_URL) throw new Error('NEXT_PUBLIC_SERVER_URL not found')
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+  if (!server_url) throw new Error('not found')
 
-  const header = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+  const header = await fetch(`${server_url}/api/graphql`, {
     body: JSON.stringify({
       query: HEADER_QUERY,
     }),
@@ -53,9 +55,10 @@ export async function fetchHeader(): Promise<Header> {
 }
 
 export async function fetchFooter(): Promise<Footer> {
-  if (!process.env.NEXT_PUBLIC_SERVER_URL) throw new Error('NEXT_PUBLIC_SERVER_URL not found')
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+  if (!server_url) throw new Error('not found')
 
-  const footer = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+  const footer = await fetch(`${server_url}/api/graphql`, {
     body: JSON.stringify({
       query: FOOTER_QUERY,
     }),

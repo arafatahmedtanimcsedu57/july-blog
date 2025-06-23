@@ -8,6 +8,7 @@ import classes from './index.module.scss'
 
 export const Video: React.FC<MediaProps> = (props) => {
   const { onClick, resource, videoClassName } = props
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
   const videoRef = useRef<HTMLVideoElement>(null)
   // const [showFallback] = useState<boolean>()
@@ -36,7 +37,7 @@ export const Video: React.FC<MediaProps> = (props) => {
         playsInline
         ref={videoRef}
       >
-        <source src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filename}`} />
+        <source src={`${server_url}/media/${filename}`} />
       </video>
     )
   }

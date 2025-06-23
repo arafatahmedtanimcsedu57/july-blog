@@ -34,6 +34,7 @@ export const AdminBar: React.FC<{
   const segments = useSelectedLayoutSegments()
   const collection = collectionLabels?.[segments?.[1]] ? segments?.[1] : 'pages'
   const [show, setShow] = React.useState(false)
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
   const { user } = useAuth()
 
@@ -58,7 +59,7 @@ export const AdminBar: React.FC<{
             logo: classes.logo,
             user: classes.user,
           }}
-          cmsURL={process.env.NEXT_PUBLIC_SERVER_URL}
+          cmsURL={server_url}
           collection={collection}
           collectionLabels={{
             plural: collectionLabels[collection]?.plural || 'Pages',
