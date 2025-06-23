@@ -1,28 +1,9 @@
-version: '3'
-
 services:
-#  payload:
-#    image: node:20-alpine
-#    ports:
-#      - '3001:3001'
-#    volumes:
-#      - .:/home/node/app
-#      - node_modules:/home/node/app/node_modules
-#    working_dir: /home/node/app/
-#    command: sh -c "yarn install && yarn build && yarn serve"
-#    depends_on:
-#      - mongo
-#    env_file:
-#      - .env
-
   mongo:
     image: mongo:latest
     ports:
-      - '127.0.0.1:27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - "127.0.0.1:27017:27017"   # bind only localhost
     volumes:
-      - /home/alwyzon/data:/data/db
-
-volumes:
-  node_modules:
+      - /home/alwyzon/data:/data/db       # MongoDB data
+      - /home/alwyzon/mongod.conf:/etc/mongod.conf:ro   # your config mounted read-only
+    command: ["mongod", "--config", "/etc/mongod.conf"]
