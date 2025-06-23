@@ -17,10 +17,10 @@ module.exports = async () => {
     source: '/:path((?!ie-incompatible.html$).*)', // all pages except the incompatibility page
   }
 
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
   try {
-    const redirectsRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/redirects?limit=1000&depth=1`,
-    )
+    const redirectsRes = await fetch(`${server_url}/api/redirects?limit=1000&depth=1`)
 
     const redirectsData = await redirectsRes.json()
     const { docs } = redirectsData
@@ -31,17 +31,14 @@ module.exports = async () => {
       docs.forEach((doc) => {
         const { from, to: { reference, type, url } = {} } = doc
 
-        let source = from
-          .replace(process.env.NEXT_PUBLIC_SERVER_URL, '')
-          .split('?')[0]
-          .toLowerCase()
+        let source = from.replace(server_url, '').split('?')[0].toLowerCase()
 
         if (source.endsWith('/')) source = source.slice(0, -1) // a trailing slash will break this redirect
 
         let destination = '/'
 
         if (type === 'custom' && url) {
-          destination = url.replace(process.env.NEXT_PUBLIC_SERVER_URL, '')
+          destination = url.replace(server_url, '')
         }
 
         if (
@@ -49,7 +46,7 @@ module.exports = async () => {
           typeof reference.value === 'object' &&
           reference?.value?._status === 'published'
         ) {
-          destination = `${process.env.NEXT_PUBLIC_SERVER_URL}/${
+          destination = `${server_url}/${
             reference.relationTo !== 'pages' ? `${reference.relationTo}/` : ''
           }${reference.value.slug}`
         }

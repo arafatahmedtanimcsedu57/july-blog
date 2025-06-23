@@ -24,6 +24,7 @@ export const PremiumContent: React.FC<{
   const [blocks, setBlocks] = React.useState<Page['layout']>()
   const hasInitialized = React.useRef(false)
   const isRequesting = React.useRef(false)
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 
   useEffect(() => {
     if (!user || hasInitialized.current || isRequesting.current) return
@@ -36,7 +37,7 @@ export const PremiumContent: React.FC<{
       setIsLoading(true)
 
       try {
-        const premiumContent = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+        const premiumContent = await fetch(`${server_url}/api/graphql`, {
           body: JSON.stringify({
             query: POST_PREMIUM_CONTENT,
             variables: {

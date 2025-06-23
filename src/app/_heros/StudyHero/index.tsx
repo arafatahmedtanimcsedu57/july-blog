@@ -44,7 +44,7 @@ export const StudyHero: React.FC<{
             <p className={classes.description}>
               Disclaimer: This content is fabricated and for demonstration purposes only. To edit
               this study,&nbsp;
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/studies/${id}`}>
+              <Link href={`${process.env.server_url}/admin/collections/studies/${id}`}>
                 navigate to the admin dashboard
               </Link>
               .

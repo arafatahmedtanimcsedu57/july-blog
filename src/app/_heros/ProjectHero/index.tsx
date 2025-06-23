@@ -44,7 +44,7 @@ export const ProjectHero: React.FC<{
             <p className={classes.description}>
               Disclaimer: This content is fabricated and for demonstration purposes only. To edit
               this project,&nbsp;
-              <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/projects/${id}`}>
+              <Link href={`${process.env.server_url}/admin/collections/projects/${id}`}>
                 navigate to the admin dashboard
               </Link>
               .

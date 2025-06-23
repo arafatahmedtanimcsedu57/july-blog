@@ -16,7 +16,8 @@ export const getMe = async (args?: {
   const cookieStore = cookies()
   const token = cookieStore.get('payload-token')?.value
 
-  const meUserReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/graphql`, {
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+  const meUserReq = await fetch(`${server_url}/api/graphql`, {
     body: JSON.stringify({
       query: ME_QUERY,
     }),

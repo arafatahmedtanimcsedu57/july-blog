@@ -8,10 +8,11 @@ import { Blocks } from '../../../_components/Blocks'
 import { ProjectHero } from '../../../_heros/ProjectHero'
 
 export const ProjectClient: React.FC<{ project: Project }> = ({ project: initialProject }) => {
+  const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
   const { data } = useLivePreview<Project>({
     depth: 1,
     initialData: initialProject,
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+    serverURL: server_url,
   })
 
   return (

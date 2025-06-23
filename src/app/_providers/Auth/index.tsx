@@ -39,8 +39,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // useful for `useEffect` hooks that should only run once
   const [status, setStatus] = useState<'loggedIn' | 'loggedOut' | undefined>()
   const create = useCallback<Create>(async (args) => {
+    const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/create`, {
+      const res = await fetch(`${server_url}/api/users/create`, {
         body: JSON.stringify({
           email: args.email,
           password: args.password,
@@ -67,8 +68,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [])
 
   const login = useCallback<Login>(async (args) => {
+    const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/login`, {
+      const res = await fetch(`${server_url}/api/users/login`, {
         body: JSON.stringify({
           email: args.email,
           password: args.password,
@@ -95,8 +98,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [])
 
   const logout = useCallback<Logout>(async () => {
+    const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/logout`, {
+      const res = await fetch(`${server_url}/api/users/logout`, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
@@ -117,8 +121,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const fetchMe = async () => {
+      const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`, {
+        const res = await fetch(`${server_url}/api/users/me`, {
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
@@ -143,8 +148,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [])
 
   const forgotPassword = useCallback<ForgotPassword>(async (args) => {
+    const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
+
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/forgot-password`, {
+      const res = await fetch(`${server_url}/api/users/forgot-password`, {
         body: JSON.stringify({
           email: args.email,
         }),
@@ -168,8 +175,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [])
 
   const resetPassword = useCallback<ResetPassword>(async (args) => {
+    const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/reset-password`, {
+      const res = await fetch(`${server_url}/api/users/reset-password`, {
         body: JSON.stringify({
           password: args.password,
           passwordConfirm: args.passwordConfirm,
