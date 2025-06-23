@@ -68,7 +68,7 @@ export async function reset(): Promise<void> {
 export const clearDB = async (): Promise<void> => {
   payload.logger.info(`— Clearing media...`)
 
-  const mediaDir = path.resolve(__dirname, '../../../media')
+  const mediaDir = path.resolve(process.cwd(), '../../../media')
   if (fs.existsSync(mediaDir)) {
     fs.rmSync(path.resolve(__dirname, '../../../media'), { recursive: true })
   }
@@ -398,8 +398,8 @@ export async function seedDB(): Promise<void> {
           data: {
             _status: 'published',
             comment: `This is a comment on post: ${post.title}. It has been approved by an admin and is now visible to the public. You can leave your own comment on this post using the form below.`,
-            doc: post.id,
-            user: demoUserID,
+            doc: String(post.id),
+            user: String(demoUserID),
           },
         }),
     ),
