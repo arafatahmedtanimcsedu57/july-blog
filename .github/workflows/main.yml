@@ -1,0 +1,50 @@
+name: Nagorik Frontend Deploy
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow only on pushes to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Run the job on the latest Ubuntu environment
+
+    steps:
+      # Step 1: Install sshpass for password-based SSH authentication
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      # Step 2: SSH into the remote server and deploy the app
+      - name: Deploy via SSH with fallback on failure
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}  # SSH password
+          PORT: ${{ secrets.PORT }}          # SSH port
+          USERNAME: ${{ secrets.USERNAME }}  # SSH username
+          IP: ${{ secrets.IP }}              # Server IP
+        run: |
+          sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p "$PORT" "$USERNAME@$IP" << 'EOF'
+            set +e  # Allow script to continue even if one command fails
+
+            echo "🔁 Switching to root user..."
+            sudo su || true
+
+            echo "📁 Navigating to project directory..."
+            cd /root/july-blog || true
+
+            echo "🛑 Stopping any running containers..."
+            pm2 stop 0 || true
+
+            echo "📡 Pulling latest changes from Git repo..."
+            git pull || true
+
+            echo "🧹 Removing old Docker image (if exists)..."
+            pm2 start 0 || true
+
+            # echo "🐳 Building Docker image..."
+            # docker build -t july-2025-frontend:latest . || true
+
+            # echo "🚀 Starting containers..."
+            # docker compose up -d || true
+
+            echo "✅ Deployment finished (even if partial failures occurred)"
+          EOF
