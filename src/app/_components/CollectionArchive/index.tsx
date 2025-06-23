@@ -177,7 +177,11 @@ export const CollectionArchive: React.FC<Props> = (props) => {
             {results.docs?.map((result, index) => {
               return (
                 <div className={classes.column} key={index}>
-                  <Card doc={result} relationTo={relationTo} showCategories />
+                  <Card
+                    doc={result}
+                    relationTo={relationTo === 'studies' ? 'posts' : relationTo}
+                    showCategories
+                  />
                 </div>
               )
             })}

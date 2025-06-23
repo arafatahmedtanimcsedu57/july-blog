@@ -19,7 +19,7 @@ module.exports = async () => {
 
   try {
     const redirectsRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/redirects?limit=1000&depth=1`,
+      `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/redirects?limit=1000&depth=1`,
     )
 
     const redirectsData = await redirectsRes.json()
