@@ -1,37 +1,26 @@
-FROM node:20-alpine as base
+# ─── Builder Stage ──────────────────────────────────────────────
+FROM node:18-alpine AS builder
 
-ENV NODE_ENV=production
-ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
+WORKDIR /app
 
-# Set working directory for all stages
-WORKDIR /home/node/app
-
-# Copy dependency files once (shared across stages)
 COPY package.json yarn.lock ./
-
-# Development build stage
-FROM base AS builder
-
-# Install all dependencies (including devDependencies for build)
 RUN yarn install
 
-# Copy all source code
 COPY . .
 
-# Build the app
-RUN yarn build
+RUN yarn build:payload && yarn build:server && yarn copyfiles
 
-# Production image
-FROM base AS runtime
+# ─── Runtime Stage ──────────────────────────────────────────────
+FROM node:18-alpine AS runner
 
-# Install only production dependencies
-RUN yarn install --production --frozen-lockfile
+WORKDIR /app
 
-# Copy only the built output from builder
-COPY --from=builder /home/node/app/dist ./dist
-COPY --from=builder /home/node/app/build ./build
-COPY --from=builder /home/node/app/public ./public
+ENV NODE_ENV=production
 
-EXPOSE 3000
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+COPY package.json yarn.lock ./
+
+RUN yarn install --production
 
 CMD ["node", "dist/server.js"]
