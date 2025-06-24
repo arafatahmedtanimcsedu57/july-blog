@@ -27,11 +27,17 @@ const importIndividualIncidents: Endpoint = {
         trim: true,
       })
 
-      console.log(records, records.entries())
+      console.log('records:', records)
+      console.log('Array.isArray(records):', Array.isArray(records))
+      console.log('typeof records:', typeof records)
+      console.log('records.constructor.name:', records?.constructor?.name)
+      console.log('Object.keys(records):', Object.keys(records))
       // Map CSV fields to IndividualIncident schema
       const created: IndividualIncident[] = []
-      for (const [i, row] of records.entries()) {
-        console.log("I am here in loop")
+      for (let i = 0; i < records.length; i++) {
+        const row = records[i]
+
+        console.log('I am here in loop')
         // Map/convert fields as needed
         let dateValue: string | undefined = undefined
         if (row.date) {
