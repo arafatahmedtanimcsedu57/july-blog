@@ -35,6 +35,12 @@ jobs:
             echo "📦 Git Pull"
             git pull || true
 
+            echo "yarn instal"
+            yarn install || true
+
+            echo "yarn build"
+            yarn build || true
+            
             echo "🚀 Starting fresh instance"
             pm2 start yarn --name july-blog -- serve
 
