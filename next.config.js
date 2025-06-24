@@ -45,7 +45,7 @@ const nextConfig = {
       {
         protocol: process.env.NEXT_PUBLIC_SERVER_PROTOCOL,
         hostname: process.env.NEXT_PUBLIC_SERVER_HOST,
-        port: process.env.NEXT_PUBLIC_SERVER_PORT,
+        // port: process.env.NEXT_PUBLIC_SERVER_PORT,
         pathname: '/media/**',
       },
     ],
