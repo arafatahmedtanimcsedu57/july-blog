@@ -560,9 +560,9 @@ export const home: Partial<Page> = {
     },
   ],
   meta: {
-    description: 'An open-source website demo built with Payload and Next.js.',
+    description: 'Monsoon Protests Archive',
     image: '{{IMAGE_1}}',
-    title: 'Payload CMS | Public Demo',
+    title: 'Monsoon Protests Archive | Bangladesh',
   },
   publishedDate: '2023-09-30T23:00:00.000Z',
   slug: 'home',
