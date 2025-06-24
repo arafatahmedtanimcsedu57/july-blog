@@ -98,8 +98,8 @@ export default buildConfig({
     HospitalIncident,
     Studies,
   ],
-  cors: [process.env.MAP_SERVER || '', 'http://localhost:3001'].filter(Boolean),
-  csrf: [process.env.MAP_SERVER || '', 'http://localhost:3001'].filter(Boolean),
+  cors: [process.env.MAP_SERVER || '', 'http://localhost:3000'].filter(Boolean),
+  csrf: [process.env.MAP_SERVER || '', 'http://localhost:3000'].filter(Boolean),
   editor: lexicalEditor({}),
   endpoints: [
     resetDBEndpoint,
