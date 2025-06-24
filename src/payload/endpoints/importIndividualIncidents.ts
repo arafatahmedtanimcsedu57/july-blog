@@ -27,6 +27,7 @@ const importIndividualIncidents: Endpoint = {
         trim: true,
       })
 
+      console.log("I am here")
       // Map CSV fields to IndividualIncident schema
       const created: IndividualIncident[] = []
       for (const [i, row] of records.entries()) {
