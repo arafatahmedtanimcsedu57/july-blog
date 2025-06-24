@@ -1,8 +1,14 @@
+version: "3.8"
+
 services:
-  mongo:
-    image: mongo:latest
+  monsoon-frontend:
+    build:
+      context: .
+    image: monsoon-protest-archives:latest
     ports:
-      - "127.0.0.1:27017:27017"
-    volumes:
-      - /root/data:/data/db
-    command: ["mongod", "--storageEngine", "wiredTiger"]
+      - "3554:3000"
+    environment:
+      NODE_ENV: production
+      PAYLOAD_SECRET: super_secure_key
+      MONGODB_URI: mongodb://host.docker.internal:27017/monsoondb
+    restart: always
