@@ -27,7 +27,8 @@ const importDistrictIncidents: Endpoint = {
 
       // Map CSV fields to DistrictIncident schema
       const created: DistrictIncident[] = []
-      for (const [i, row] of records.entries()) {
+      for (let i = 0; i < records.length; i++) {
+        const row = records[i]
         const incident: Partial<DistrictIncident> = {
           district: row.district,
           lat: row.lat,

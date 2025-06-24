@@ -27,7 +27,8 @@ const importHospitalIncidents: Endpoint = {
 
       // Map CSV fields to HospitalIncident schema
       const created: HospitalIncident[] = []
-      for (const [i, row] of records.entries()) {
+      for (let i = 0; i < records.length; i++) {
+        const row = records[i]
         const incident: Partial<HospitalIncident> = {
           name: row.name,
           lat: row.lat ? row.lat : 0,

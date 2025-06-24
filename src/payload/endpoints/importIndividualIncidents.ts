@@ -27,17 +27,11 @@ const importIndividualIncidents: Endpoint = {
         trim: true,
       })
 
-      console.log('records:', records)
-      console.log('Array.isArray(records):', Array.isArray(records))
-      console.log('typeof records:', typeof records)
-      console.log('records.constructor.name:', records?.constructor?.name)
-      console.log('Object.keys(records):', Object.keys(records))
       // Map CSV fields to IndividualIncident schema
       const created: IndividualIncident[] = []
       for (let i = 0; i < records.length; i++) {
         const row = records[i]
 
-        console.log('I am here in loop')
         // Map/convert fields as needed
         let dateValue: string | undefined = undefined
         if (row.date) {
@@ -73,15 +67,11 @@ const importIndividualIncidents: Endpoint = {
           type: row.type ? row.type : undefined,
         }
 
-        console.log('incident', incident)
-
         // Create entry in Payload
         const createdIncident = await req.payload.create({
           collection: 'individual-incidents',
           data: incident,
         })
-
-        console.log('createdIncident', createdIncident)
 
         created.push(createdIncident as IndividualIncident)
       }
