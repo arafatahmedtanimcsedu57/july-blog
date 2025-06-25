@@ -20,7 +20,7 @@ export const staticHome: Page = {
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'Finally, a CMS that works the way you do.',
+                    text: '',
                     type: 'text',
                     version: 1,
                   },
@@ -37,7 +37,7 @@ export const staticHome: Page = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'No black magic, all TypeScript, and fully open-source. ',
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -46,7 +46,7 @@ export const staticHome: Page = {
                 format: 1,
                 mode: 'normal',
                 style: '',
-                text: 'Your database is currently empty.',
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -64,7 +64,7 @@ export const staticHome: Page = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'The code for this demo is completely open-source and can be found ',
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -75,7 +75,7 @@ export const staticHome: Page = {
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'here',
+                    text: '',
                     type: 'text',
                     version: 1,
                   },
@@ -126,10 +126,10 @@ export const staticHome: Page = {
         {
           link: {
             appearance: 'primary',
-            label: 'Go to dashboard',
+            label: '',
             reference: undefined,
             type: 'custom',
-            url: '/admin',
+            url: '',
           },
         },
       ],
@@ -137,7 +137,7 @@ export const staticHome: Page = {
         {
           children: [
             {
-              text: 'This is a call to action',
+              text: '',
             },
           ],
           type: 'h4',
@@ -145,12 +145,12 @@ export const staticHome: Page = {
         {
           children: [
             {
-              text: 'Your database is currently empty. To seed your database, ',
+              text: '',
             },
             {
               children: [
                 {
-                  text: 'log in to the admin dashboard',
+                  text: '',
                 },
               ],
               linkType: 'custom',
@@ -158,7 +158,7 @@ export const staticHome: Page = {
               url: '/admin',
             },
             {
-              text: " and start managing this site's content.",
+              text: '',
             },
           ],
         },

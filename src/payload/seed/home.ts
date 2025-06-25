@@ -6,30 +6,30 @@ export const home: Partial<Page> = {
   _status: 'published',
   hero: {
     links: [
-      {
-        link: {
-          appearance: 'primary',
-          label: 'All posts',
-          reference: {
-            relationTo: 'pages',
-            value: '{{POSTS_PAGE_ID}}',
-          },
-          type: 'reference',
-          url: '',
-        },
-      },
-      {
-        link: {
-          appearance: 'secondary',
-          label: 'All projects',
-          reference: {
-            relationTo: 'pages',
-            value: '{{PROJECTS_PAGE_ID}}',
-          },
-          type: 'reference',
-          url: '',
-        },
-      },
+      // {
+      //   link: {
+      //     appearance: 'primary',
+      //     label: 'All posts',
+      //     reference: {
+      //       relationTo: 'pages',
+      //       value: '{{POSTS_PAGE_ID}}',
+      //     },
+      //     type: 'reference',
+      //     url: '',
+      //   },
+      // },
+      // {
+      //   link: {
+      //     appearance: 'secondary',
+      //     label: 'All projects',
+      //     reference: {
+      //       relationTo: 'pages',
+      //       value: '{{PROJECTS_PAGE_ID}}',
+      //     },
+      //     type: 'reference',
+      //     url: '',
+      //   },
+      // },
     ],
     media: '{{IMAGE_1}}',
     richText: {
@@ -42,7 +42,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Finally, a CMS that works the way you do.',
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -61,7 +61,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'No black magic, all TypeScript, and fully open-source. ',
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -72,7 +72,7 @@ export const home: Partial<Page> = {
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'Visit the admin dashboard ',
+                    text: '',
                     type: 'text',
                     version: 1,
                   },
@@ -94,7 +94,7 @@ export const home: Partial<Page> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "to begin managing this site's content. The code for this demo is completely open-source and can be found ",
+                text: '',
                 type: 'text',
                 version: 1,
               },
@@ -114,7 +114,7 @@ export const home: Partial<Page> = {
                 fields: {
                   linkType: 'custom',
                   newTab: true,
-                  url: 'https://github.com/payloadcms/public-demo',
+                  url: '',
                 },
                 format: '',
                 indent: 0,
@@ -157,7 +157,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Core features',
+                  text: '',
                 },
               ],
               type: 'h2',
@@ -178,7 +178,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Admin Dashboard',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -186,17 +186,17 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: "Manage this site's pages, posts, projects and more from the ",
+                  text: '',
                 },
                 {
                   children: [
                     {
-                      text: 'admin dashboard',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/admin',
+                  url: '',
                 },
                 {
                   text: '.',
@@ -212,7 +212,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Authentication',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -220,17 +220,17 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Complete user ',
+                  text: '',
                 },
                 {
                   children: [
                     {
-                      text: 'login',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/login',
+                  url: '',
                 },
                 {
                   text: ' and ',
@@ -238,15 +238,15 @@ export const home: Partial<Page> = {
                 {
                   children: [
                     {
-                      text: 'create account',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/create-account',
+                  url: '',
                 },
                 {
-                  text: ' flows with email verification and password reset.',
+                  text: '',
                 },
               ],
             },
@@ -260,7 +260,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Preview',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -268,7 +268,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Using versions, drafts, and preview, editors can review and share their changes before publishing them.',
+                  text: '',
                 },
               ],
             },
@@ -281,7 +281,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Comments',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -289,17 +289,17 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Users can comment on posts and editors can moderate comments directly from the ',
+                  text: '',
                 },
                 {
                   children: [
                     {
-                      text: 'admin dashboard',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/admin/collections/comments',
+                  url: '',
                 },
                 {
                   text: '.',
@@ -315,7 +315,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'User Accounts',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -328,36 +328,15 @@ export const home: Partial<Page> = {
                 {
                   children: [
                     {
-                      text: 'manage their account',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/account',
+                  url: '',
                 },
                 {
-                  text: ', view their comment history, and more without leaving the site.',
-                },
-              ],
-            },
-          ]) as any,
-          size: 'oneThird',
-        },
-        {
-          enableLink: false,
-          richText: convertSlateToLexical([
-            {
-              children: [
-                {
-                  text: 'Premium Content',
-                },
-              ],
-              type: 'h3',
-            },
-            {
-              children: [
-                {
-                  text: 'Easily restrict access to premium content to only authenticated members of your site.',
+                  text: '',
                 },
               ],
             },
@@ -370,7 +349,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Page Builder',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -378,7 +357,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Custom page builder allows you to create unique page, post, and project layouts for any type of content.',
+                  text: '',
                 },
               ],
             },
@@ -391,7 +370,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'SEO',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -399,17 +378,38 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Editors have complete control over SEO data and site content directly from the ',
+                  text: '',
+                },
+              ],
+            },
+          ]) as any,
+          size: 'oneThird',
+        },
+        {
+          enableLink: false,
+          richText: convertSlateToLexical([
+            {
+              children: [
+                {
+                  text: '',
+                },
+              ],
+              type: 'h3',
+            },
+            {
+              children: [
+                {
+                  text: '',
                 },
                 {
                   children: [
                     {
-                      text: 'admin dashboard',
+                      text: '',
                     },
                   ],
                   linkType: 'custom',
                   type: 'link',
-                  url: '/admin',
+                  url: '',
                 },
                 {
                   text: '.',
@@ -425,7 +425,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Dark Mode',
+                  text: '',
                 },
               ],
               type: 'h3',
@@ -433,7 +433,7 @@ export const home: Partial<Page> = {
             {
               children: [
                 {
-                  text: 'Users will experience this site in their preferred color scheme and each block can be inverted.',
+                  text: '',
                 },
               ],
             },
@@ -464,7 +464,7 @@ export const home: Partial<Page> = {
         {
           children: [
             {
-              text: 'The posts below are displayed in an "Archive" layout building block which is an extremely powerful way to display documents on a page. It can be auto-populated by collection or by category, or posts can be individually selected. Pagination controls will automatically appear if the number of results exceeds the number of items per page.',
+              text: '',
             },
           ],
           type: 'p',
@@ -489,7 +489,7 @@ export const home: Partial<Page> = {
         {
           children: [
             {
-              text: 'The projects below are displayed in an "Archive" layout building block which is an extremely powerful way to display documents on a page. It can be auto-populated by collection or by category, or projects can be individually selected. Pagination controls will automatically appear if the number of results exceeds the number of items per page.',
+              text: '',
             },
           ],
           type: 'p',
@@ -505,7 +505,7 @@ export const home: Partial<Page> = {
         {
           link: {
             appearance: 'primary',
-            label: 'All posts',
+            label: '',
             reference: {
               relationTo: 'pages',
               value: '{{POSTS_PAGE_ID}}',
@@ -517,7 +517,7 @@ export const home: Partial<Page> = {
         {
           link: {
             appearance: 'secondary',
-            label: 'All projects',
+            label: '',
             reference: {
               relationTo: 'pages',
               value: '{{PROJECTS_PAGE_ID}}',
@@ -531,7 +531,7 @@ export const home: Partial<Page> = {
         {
           children: [
             {
-              text: 'This is a call to action',
+              text: '',
             },
           ],
           type: 'h4',
@@ -539,17 +539,17 @@ export const home: Partial<Page> = {
         {
           children: [
             {
-              text: 'This is a custom layout building block ',
+              text: '',
             },
             {
               children: [
                 {
-                  text: 'configured in the admin dashboard',
+                  text: '',
                 },
               ],
               linkType: 'custom',
               type: 'link',
-              url: '/admin',
+              url: '',
             },
             {
               text: '.',
