@@ -3,6 +3,8 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 
 import { payloadCloud } from '@payloadcms/plugin-cloud'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
 // import formBuilder from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
@@ -33,8 +35,6 @@ import { clearDBEndpoint, resetDBEndpoint, seedDBEndpoint } from './endpoints/re
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Settings } from './globals/Settings'
-import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
-import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 // Ensure S3_ENDPOINT, S3_ACCESS_KEY_ID, S3_SECRET, and S3_BUCKET environment variables are set
 
 const generateTitle: GenerateTitle = () => {
@@ -85,9 +85,9 @@ export default buildConfig({
     }),
   },
   collections: [
-    Pages,
-    Posts,
-    Projects,
+    // Pages,
+    // Posts,
+    // Projects,
     Films,
     Media,
     Categories,
@@ -147,15 +147,15 @@ export default buildConfig({
       collections: {
         media: {
           adapter: s3Adapter({
+            bucket: process.env.S3_BUCKET || '',
             config: {
-              endpoint: process.env.S3_ENDPOINT,
-              region: process.env.S3_REGION || 'auto',
               credentials: {
                 accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
                 secretAccessKey: process.env.S3_SECRET || '',
               },
+              endpoint: process.env.S3_ENDPOINT,
+              region: process.env.S3_REGION || 'auto',
             },
-            bucket: process.env.S3_BUCKET || '',
           }),
         },
       },
