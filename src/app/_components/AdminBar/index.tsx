@@ -61,10 +61,10 @@ export const AdminBar: React.FC<{
           }}
           cmsURL={server_url}
           collection={collection}
-          collectionLabels={{
-            plural: collectionLabels[collection]?.plural || 'Pages',
-            singular: collectionLabels[collection]?.singular || 'Page',
-          }}
+          // collectionLabels={{
+          //   plural: collectionLabels[collection]?.plural || 'Pages',
+          //   singular: collectionLabels[collection]?.singular || 'Page',
+          // }}
           key={user?.id} // use key to get the admin bar to re-run its `me` request
           logo={<Title />}
           style={{
