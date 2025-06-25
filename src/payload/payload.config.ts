@@ -92,7 +92,7 @@ export default buildConfig({
     Media,
     Categories,
     Users,
-    Comments,
+    // Comments,
     IndividualIncident,
     DistrictIncident,
     HospitalIncident,
