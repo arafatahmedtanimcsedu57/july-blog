@@ -178,7 +178,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
                 <div className={classes.column} key={index}>
                   <Card
                     doc={result}
-                    relationTo={relationTo === 'studies' ? 'posts' : relationTo}
+                    relationTo={relationTo }
                     showCategories
                   />
                 </div>
