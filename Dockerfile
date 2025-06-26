@@ -20,7 +20,7 @@ ENV NODE_ENV=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 COPY package.json yarn.lock ./
-
+COPY .env ./
 RUN yarn install --production
 
-CMD ["node", "dist/server.js"]
+CMD ["yarn", "serve"]

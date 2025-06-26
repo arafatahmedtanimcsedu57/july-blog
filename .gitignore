@@ -61,3 +61,5 @@ docker-compose.override.yml
 src/payload/cron/*.jpg
 src/payload/cron/*.png
 src/payload/cron/*.jpeg
+
+./data

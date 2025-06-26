@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   monsoon-frontend:
@@ -6,9 +6,15 @@ services:
       context: .
     image: monsoon-protest-archives:latest
     ports:
-      - "3554:3000"
-    environment:
-      NODE_ENV: production
-      PAYLOAD_SECRET: super_secure_key
-      MONGODB_URI: mongodb://host.docker.internal:27017/monsoondb
+      - '3554:3000'
+    restart: always
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
     restart: always
