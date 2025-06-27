@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
-  description: 'An open-source website built with Payload and Next.js.',
+  description: 'Documenting the July Uprising in Bangladesh',
   images: [
     {
-      url: 'https://payloadcms.com/images/og-image.jpg',
+      url: '/logo.png',
     },
   ],
-  siteName: 'Payload Public Demo',
-  title: 'Payload Public Demo',
+  siteName: 'MONSOON PROTEST ARCHIVE',
+  title: 'MONSOON PROTEST ARCHIVE',
   type: 'website',
 }
 
