@@ -10,10 +10,14 @@ import {
   ParagraphFeature,
   UnderlineTextFeature,
   UnorderedListFeature,
+  IndentFeature,
+  HorizontalRuleFeature,
+  TreeViewFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { LabelFeature } from '../lexicalFeatures/label'
 import { LargeBodyFeature } from '../lexicalFeatures/largeBody'
+import { LineBreakNode } from 'lexical'
 
 export const defaultPublicDemoFeatures: FeatureProvider[] = [
   ParagraphFeature(),
@@ -29,4 +33,7 @@ export const defaultPublicDemoFeatures: FeatureProvider[] = [
   LabelFeature(),
   UnorderedListFeature(),
   OrderedListFeature(),
+  IndentFeature(),
+  HorizontalRuleFeature(),
+  TreeViewFeature(),
 ]
