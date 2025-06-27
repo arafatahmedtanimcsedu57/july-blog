@@ -46,9 +46,9 @@ const m = path.resolve(__dirname, './emptyModuleMock.js')
 export default buildConfig({
   admin: {
     autoLogin: {
-      email: 'demo@payloadcms.com',
-      password: 'demo',
-      prefillOnly: true,
+      email: '',
+      password: '',
+      prefillOnly: false,
     },
     bundler: webpackBundler(), // bundler-config
     components: {

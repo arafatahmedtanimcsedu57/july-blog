@@ -32,10 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 const server_url = `${process.env.NEXT_PUBLIC_SERVER_PROTOCOL}://${process.env.NEXT_PUBLIC_SERVER_HOST}:${process.env.NEXT_PUBLIC_SERVER_PORT}`
 export const metadata: Metadata = {
-  metadataBase: new URL(server_url || 'https://payloadcms.com'),
+  metadataBase: new URL(server_url || ''),
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    creator: '',
   },
 }

@@ -28,9 +28,9 @@ export const generateMeta = async (args: {
             },
           ]
         : undefined,
-      title: doc?.meta?.title || 'Payload',
+      title: doc?.meta?.title || 'MONSOON PROTEST ARCHIVE',
       url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
     }),
-    title: doc?.meta?.title || 'Payload',
+    title: doc?.meta?.title || 'MONSOON PROTEST ARCHIVE',
   }
 }

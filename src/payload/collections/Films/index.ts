@@ -66,6 +66,10 @@ export const Films: CollectionConfig = {
                 {
                   name: 'videoLink',
                   type: 'text',
+                  admin: {
+                    description:
+                      'Please enter a valid Vimeo link (e.g.,  https://player.vimeo.com/video/xxxxxx)',
+                  },
                 },
               ],
 
