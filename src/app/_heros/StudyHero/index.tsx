@@ -20,8 +20,7 @@ export const StudyHero: React.FC<{
         <div className={classes.content}>
           <div className={classes.leader}>
             <div className={classes.categories}>
-              {publishedDate && formatDateTime(publishedDate)}
-              &nbsp; &mdash; &nbsp;
+            
               {categories?.map((category, index) => {
                 const { title: categoryTitle } = category as Category
 
