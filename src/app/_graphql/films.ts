@@ -25,6 +25,7 @@ export const FILM = `
         hero {
           richText
           ${MEDIA}
+          videoLink
         }
         layout {
           ${CONTENT}

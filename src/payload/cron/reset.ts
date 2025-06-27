@@ -47,7 +47,7 @@ export async function seed(): Promise<void> {
     await seedDB()
     payload.logger.info(`Seed Complete.`)
   } catch (error: unknown) {
-    console.error(error) // eslint-disable-line no-console
+    console.error(error)
     payload.logger.error('Error seeding database.')
   }
 }
@@ -60,7 +60,7 @@ export async function reset(): Promise<void> {
     await seedDB()
     payload.logger.info(`Reset Complete.`)
   } catch (error: unknown) {
-    console.error(error) // eslint-disable-line no-console
+    console.error(error)
     payload.logger.error('Error resetting database.')
   }
 }
@@ -74,37 +74,37 @@ export const clearDB = async (): Promise<void> => {
   }
 
   payload.logger.info(`— Clearing collections and globals...`)
-  await Promise.all([
-    ...collections.map(async (collection) => {
+  await Promise.all(
+    collections.map(async (collection) => {
       try {
         await payload.delete({
           collection: collection as 'media',
           where: {},
         })
       } catch (error: unknown) {
-        console.error(`Error deleting collection ${collection}:`, error) // eslint-disable-line no-console
+        console.error(`Error deleting collection ${collection}:`, error)
         throw error
       }
     }),
-    ...globals.map(async (global) => {
+    globals.map(async (global) => {
       try {
         await payload.updateGlobal({
           data: {},
           slug: global as 'header',
         })
       } catch (error: unknown) {
-        console.error(`Error updating global ${global}:`, error) // eslint-disable-line no-console
+        console.error(`Error updating global ${global}:`, error)
         throw error
       }
     }),
-  ])
+  )
 }
 
 export async function seedDB(): Promise<void> {
   payload.logger.info(`— Seeding demo author and user...`)
 
   const [{ id: demoAuthorID }, { id: demoUserID }] = await Promise.all([
-    await payload.create({
+    payload.create({
       collection: 'users',
       data: {
         name: 'Demo Author',
@@ -113,7 +113,7 @@ export async function seedDB(): Promise<void> {
         roles: ['admin'],
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'users',
       data: {
         name: 'Demo User',
@@ -152,122 +152,122 @@ export async function seedDB(): Promise<void> {
     projectEng3Doc,
     projectEng4Doc,
   ] = await Promise.all([
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: image1,
       filePath: path.resolve(__dirname, 'image-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: image2,
       filePath: path.resolve(__dirname, 'image-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: imageSpheres,
       filePath: path.resolve(__dirname, 'image-spheres.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postTech1,
       filePath: path.resolve(__dirname, 'post-tech-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postTechAi,
       filePath: path.resolve(__dirname, 'post-ai-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postTechIot,
       filePath: path.resolve(__dirname, 'post-iot-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postTechQuant,
       filePath: path.resolve(__dirname, 'post-quant-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postNews2,
       filePath: path.resolve(__dirname, 'post-news-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postNewsHope,
       filePath: path.resolve(__dirname, 'post-hope-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postNewsDest,
       filePath: path.resolve(__dirname, 'post-destination-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postFinance3,
       filePath: path.resolve(__dirname, 'post-finance-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postFinanceStocks,
       filePath: path.resolve(__dirname, 'post-stocks-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: postFinanceBuildings,
       filePath: path.resolve(__dirname, 'post-buildings-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectDesign,
       filePath: path.resolve(__dirname, 'project-design.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectDesign2,
       filePath: path.resolve(__dirname, 'project-design-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectDesign3,
       filePath: path.resolve(__dirname, 'project-design-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectSoftware,
       filePath: path.resolve(__dirname, 'project-software-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectSoftware2,
       filePath: path.resolve(__dirname, 'project-software-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectSoftware3,
       filePath: path.resolve(__dirname, 'project-software-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectSoftware4,
       filePath: path.resolve(__dirname, 'project-software-4.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectEng,
       filePath: path.resolve(__dirname, 'project-eng-1.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectEng2,
       filePath: path.resolve(__dirname, 'project-eng-2.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectEng3,
       filePath: path.resolve(__dirname, 'project-eng-3.jpg'),
     }),
-    await payload.create({
+    payload.create({
       collection: 'media',
       data: projectEng4,
       filePath: path.resolve(__dirname, 'project-eng-4.jpg'),
@@ -284,37 +284,37 @@ export async function seedDB(): Promise<void> {
     softwareCat,
     engineeringCat,
   ] = await Promise.all([
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Technology',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'News',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Finance',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Design',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Software',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Engineering',
@@ -330,11 +330,11 @@ export async function seedDB(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post1, categories: [technologyCategory.id] })
-        .replace(/\{\{IMAGE-1\}\}/g, postImage1Doc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, postTechAi1Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, postTechIot1Doc.id)
-        .replace(/\{\{IMAGE-4\}\}/g, postTechQuant1Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{IMAGE-1\}\}/g, postImage1Doc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, postTechAi1Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, postTechIot1Doc?.id?.toString())
+        .replace(/\{\{IMAGE-4\}\}/g, postTechQuant1Doc?.id?.toString())
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID.toString()),
     ),
   })
 
@@ -342,10 +342,10 @@ export async function seedDB(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post2, categories: [newsCategory.id] })
-        .replace(/\{\{IMAGE-1\}\}/g, postImage2Doc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, postNewsHope2Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, postNewsDest2Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{IMAGE-1\}\}/g, postImage2Doc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, postNewsHope2Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, postNewsDest2Doc?.id?.toString())
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID.toString()),
     ),
   })
 
@@ -353,10 +353,10 @@ export async function seedDB(): Promise<void> {
     collection: 'posts',
     data: JSON.parse(
       JSON.stringify({ ...post3, categories: [financeCategory.id] })
-        .replace(/\{\{IMAGE-1\}\}/g, postImage3Doc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, postFinanceStocks3Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, postFinanceBuildings3Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{IMAGE-1\}\}/g, postImage3Doc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, postFinanceStocks3Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, postFinanceBuildings3Doc?.id?.toString())
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID.toString()),
     ),
   })
 
@@ -365,25 +365,25 @@ export async function seedDB(): Promise<void> {
   // update each post with related posts
 
   await Promise.all([
-    await payload.update({
-      id: post1Doc.id,
+    payload.update({
+      id: post1Doc.id.toString(),
       collection: 'posts',
       data: {
-        relatedPosts: [post2Doc.id, post3Doc.id],
+        relatedPosts: [post2Doc.id.toString(), post3Doc.id.toString()],
       },
     }),
-    await payload.update({
-      id: post2Doc.id,
+    payload.update({
+      id: post2Doc.id.toString(),
       collection: 'posts',
       data: {
-        relatedPosts: [post1Doc.id, post3Doc.id],
+        relatedPosts: [post1Doc.id.toString(), post3Doc.id.toString()],
       },
     }),
-    await payload.update({
-      id: post3Doc.id,
+    payload.update({
+      id: post3Doc.id.toString(),
       collection: 'posts',
       data: {
-        relatedPosts: [post1Doc.id, post2Doc.id],
+        relatedPosts: [post1Doc.id.toString(), post2Doc.id.toString()],
       },
     }),
   ])
@@ -413,10 +413,10 @@ export async function seedDB(): Promise<void> {
     collection: 'projects',
     data: JSON.parse(
       JSON.stringify({ ...project1, categories: [designCat.id] })
-        .replace(/\{\{IMAGE\}\}/g, projectDesignDoc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, projectDesign2Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, projectDesign3Doc.id)
-        .replace(/\{\{IMAGE-SPHERE\}\}/g, imageSpheresDoc.id),
+        .replace(/\{\{IMAGE\}\}/g, projectDesignDoc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, projectDesign2Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, projectDesign3Doc?.id?.toString())
+        .replace(/\{\{IMAGE-SPHERE\}\}/g, imageSpheresDoc?.id?.toString()),
     ),
   })
 
@@ -424,10 +424,10 @@ export async function seedDB(): Promise<void> {
     collection: 'projects',
     data: JSON.parse(
       JSON.stringify({ ...project2, categories: [softwareCat.id] })
-        .replace(/\{\{IMAGE-1\}\}/g, projectSoftwareDoc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, projectSoftware2Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, projectSoftware3Doc.id)
-        .replace(/\{\{IMAGE-4\}\}/g, projectSoftware4Doc.id),
+        .replace(/\{\{IMAGE-1\}\}/g, projectSoftwareDoc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, projectSoftware2Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, projectSoftware3Doc?.id?.toString())
+        .replace(/\{\{IMAGE-4\}\}/g, projectSoftware4Doc?.id?.toString()),
     ),
   })
 
@@ -435,35 +435,35 @@ export async function seedDB(): Promise<void> {
     collection: 'projects',
     data: JSON.parse(
       JSON.stringify({ ...project3, categories: [engineeringCat.id] })
-        .replace(/\{\{IMAGE-1\}\}/g, projectEngDoc.id)
-        .replace(/\{\{IMAGE-2\}\}/g, projectEng2Doc.id)
-        .replace(/\{\{IMAGE-3\}\}/g, projectEng3Doc.id)
-        .replace(/\{\{IMAGE-4\}\}/g, projectEng4Doc.id),
+        .replace(/\{\{IMAGE-1\}\}/g, projectEngDoc?.id?.toString())
+        .replace(/\{\{IMAGE-2\}\}/g, projectEng2Doc?.id?.toString())
+        .replace(/\{\{IMAGE-3\}\}/g, projectEng3Doc?.id?.toString())
+        .replace(/\{\{IMAGE-4\}\}/g, projectEng4Doc?.id?.toString()),
     ),
   })
 
   // update each project with related projects
 
   await Promise.all([
-    await payload.update({
-      id: project1Doc.id,
+    payload.update({
+      id: project1Doc.id.toString(),
       collection: 'projects',
       data: {
-        relatedProjects: [project2Doc.id, project3Doc.id],
+        relatedProjects: [project2Doc.id.toString(), project3Doc.id.toString()],
       },
     }),
-    await payload.update({
-      id: project2Doc.id,
+    payload.update({
+      id: project2Doc.id.toString(),
       collection: 'projects',
       data: {
-        relatedProjects: [project1Doc.id, project3Doc.id],
+        relatedProjects: [project1Doc.id.toString(), project3Doc.id.toString()],
       },
     }),
-    await payload.update({
-      id: project3Doc.id,
+    payload.update({
+      id: project3Doc.id.toString(),
       collection: 'projects',
       data: {
-        relatedProjects: [project1Doc.id, project2Doc.id],
+        relatedProjects: [project1Doc.id.toString(), project2Doc.id.toString()],
       },
     }),
   ])
@@ -472,14 +472,18 @@ export async function seedDB(): Promise<void> {
 
   const { id: postsPageID } = await payload.create({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(postsPage).replace(/\{\{IMAGE\}\}/g, image1Doc.id)),
+    data: JSON.parse(
+      JSON.stringify(postsPage).replace(/\{\{IMAGE\}\}/g, image1Doc?.id?.toString()),
+    ),
   })
 
   payload.logger.info(`— Seeding projects page...`)
 
   const { id: projectsPageID } = await payload.create({
     collection: 'pages',
-    data: JSON.parse(JSON.stringify(projectsPage).replace(/\{\{IMAGE\}\}/g, image1Doc.id)),
+    data: JSON.parse(
+      JSON.stringify(projectsPage).replace(/\{\{IMAGE\}\}/g, image1Doc?.id?.toString()),
+    ),
   })
 
   payload.logger.info(`— Seeding home page...`)
@@ -488,68 +492,20 @@ export async function seedDB(): Promise<void> {
     collection: 'pages',
     data: JSON.parse(
       JSON.stringify(home)
-        .replace(/\{\{IMAGE_1\}\}/g, image1Doc.id)
-        .replace(/\{\{IMAGE_2\}\}/g, image2Doc.id)
-        .replace(/\{\{POSTS_PAGE_ID\}\}/g, postsPageID)
-        .replace(/\{\{PROJECTS_PAGE_ID\}\}/g, projectsPageID),
+        .replace(/\{\{IMAGE_1\}\}/g, image1Doc?.id?.toString())
+        .replace(/\{\{IMAGE_2\}\}/g, image2Doc?.id?.toString())
+        .replace(/\{\{POSTS_PAGE_ID\}\}/g, postsPageID.toString())
+        .replace(/\{\{PROJECTS_PAGE_ID\}\}/g, projectsPageID.toString()),
     ),
   })
 
   payload.logger.info(`— Seeding settings...`)
 
   await payload.updateGlobal({
-    data: {
-      postsPage: postsPageID,
-      projectsPage: projectsPageID,
-    },
     slug: 'settings',
-  })
-
-  payload.logger.info(`— Seeding header...`)
-
-  await payload.updateGlobal({
     data: {
-      navItems: [
-        {
-          link: {
-            label: 'Posts',
-            reference: {
-              relationTo: 'pages',
-              value: postsPageID,
-            },
-            type: 'reference',
-          },
-        },
-        {
-          link: {
-            label: 'Projects',
-            reference: {
-              relationTo: 'pages',
-              value: projectsPageID,
-            },
-            type: 'reference',
-          },
-        },
-      ],
+      postsPage: postsPageID.toString(),
+      projectsPage: projectsPageID.toString(),
     },
-    slug: 'header',
   })
-
-  await payload.updateGlobal({
-    data: {
-      navItems: [
-        {
-          link: {
-            label: 'Account',
-            reference: undefined,
-            type: 'custom',
-            url: '/account',
-          },
-        },
-      ],
-    },
-    slug: 'footer',
-  })
-
-  payload.logger.info('Seeded database successfully!')
 }

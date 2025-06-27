@@ -29,7 +29,7 @@ export async function Header() {
       <header className={classes.header}>
         <Gutter className={classes.wrap}>
           <Link className={classes.wrap} href="/">
-            <img alt="MONSOON PROTEST ARCHIVES LOGO" className={classes.logo} src="logo.png" />
+            <img alt="MONSOON PROTEST ARCHIVES LOGO" className={classes.logo} src="/logo.png" />
             <p className={classes.brand}>MONSOON PROTEST ARCHIVES</p>
           </Link>
           <HeaderNav header={header} />

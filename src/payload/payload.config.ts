@@ -98,7 +98,12 @@ export default buildConfig({
     HospitalIncident,
     Studies,
   ],
-  cors: [process.env.MAP_SERVER || '', 'http://localhost:3000'].filter(Boolean),
+  cors: [
+    process.env.MAP_SERVER || '',
+    'http://localhost:3000',
+    'https://player.vimeo.com',
+    'https://vimeo.com',
+  ].filter(Boolean),
   csrf: [process.env.MAP_SERVER || '', 'http://localhost:3000'].filter(Boolean),
   editor: lexicalEditor({}),
   endpoints: [

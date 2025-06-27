@@ -81,3 +81,30 @@
 .caption {
   color: var(--theme-elevation-500);
 }
+
+.videoIframeContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mid-break {
+    width: 100%;
+  }
+}
+
+.videoIframe {
+  width: 100%;
+
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  aspect-ratio: 5/ 4;
+  // width: calc(100% + calc(var(--gutter-h) / 2));
+  border: 1px solid black;
+
+  @include mid-break {
+    margin-left: calc(var(--gutter-h) * -1);
+    width: calc(100% + var(--gutter-h) * 2);
+  }
+}
