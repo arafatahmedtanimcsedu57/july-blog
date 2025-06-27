@@ -20,52 +20,10 @@ export const FilmHero: React.FC<{
     <Fragment>
       <Gutter className={classes.filmHero}>
         <div className={classes.content}>
-          <div className={classes.leader}>
-            <div className={classes.categories}>
-              {publishedDate && formatDateTime(publishedDate)}
-              &nbsp; &mdash; &nbsp;
-              {categories?.map((category, index) => {
-                const { title: categoryTitle } = category as Category
-
-                const titleToUse = categoryTitle || 'Untitled category'
-
-                const isLast = index === categories.length - 1
-
-                return (
-                  <Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <Fragment>, &nbsp;</Fragment>}
-                  </Fragment>
-                )
-              })}
-            </div>
-          </div>
           <h1 className={classes.title}>{title}</h1>
           {hero && <RichText content={hero.richText} />}
-          {/* <div>
-            <p className={classes.description}>
-              Disclaimer: This content is fabricated and for demonstration purposes only. To edit
-              this film,&nbsp;
-              <Link href={`${server_url}/admin/collections/films/${id}`}>
-                navigate to the admin dashboard
-              </Link>
-              .
-            </p>
-          </div> */}
         </div>
-        {metaImage && (
-          <div className={classes.media}>
-            <div className={classes.mediaWrapper}>
-              {!metaImage && <div className={classes.placeholder}>No image</div>}
-              {metaImage && typeof metaImage !== 'string' && (
-                <Media fill imgClassName={classes.image} priority resource={metaImage} />
-              )}
-            </div>
-            {metaImage && typeof metaImage !== 'string' && metaImage?.caption && (
-              <RichText className={classes.caption} content={metaImage.caption} />
-            )}
-          </div>
-        )}
+
         {videoLinkValue && (
           <div className={classes.videoIframeContainer}>
             <iframe
@@ -76,8 +34,7 @@ export const FilmHero: React.FC<{
               allow="autoplay; fullscreen"
               allowFullScreen
               title="Sample Vimeo"
-              className={ classes.videoIframe }
-
+              className={classes.videoIframe}
             />
           </div>
         )}

@@ -24,7 +24,6 @@ export const FILM = `
         publishedDate,
         hero {
           richText
-          ${MEDIA}
           videoLink
         }
         layout {

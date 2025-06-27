@@ -74,8 +74,8 @@ export const clearDB = async (): Promise<void> => {
   }
 
   payload.logger.info(`— Clearing collections and globals...`)
-  await Promise.all(
-    collections.map(async (collection) => {
+  await Promise.all([
+    ...collections.map(async (collection) => {
       try {
         await payload.delete({
           collection: collection as 'media',
@@ -86,7 +86,7 @@ export const clearDB = async (): Promise<void> => {
         throw error
       }
     }),
-    globals.map(async (global) => {
+    ...globals.map(async (global) => {
       try {
         await payload.updateGlobal({
           data: {},
@@ -97,7 +97,7 @@ export const clearDB = async (): Promise<void> => {
         throw error
       }
     }),
-  )
+  ])
 }
 
 export async function seedDB(): Promise<void> {
@@ -497,15 +497,5 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{POSTS_PAGE_ID\}\}/g, postsPageID.toString())
         .replace(/\{\{PROJECTS_PAGE_ID\}\}/g, projectsPageID.toString()),
     ),
-  })
-
-  payload.logger.info(`— Seeding settings...`)
-
-  await payload.updateGlobal({
-    slug: 'settings',
-    data: {
-      postsPage: postsPageID.toString(),
-      projectsPage: projectsPageID.toString(),
-    },
   })
 }

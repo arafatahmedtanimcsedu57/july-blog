@@ -62,11 +62,7 @@ export const Films: CollectionConfig = {
               name: 'hero',
               fields: [
                 richText(),
-                {
-                  name: 'media',
-                  relationTo: 'media',
-                  type: 'upload',
-                },
+
                 {
                   name: 'videoLink',
                   type: 'text',
