@@ -20,6 +20,24 @@ export const FilmHero: React.FC<{
     <Fragment>
       <Gutter className={classes.filmHero}>
         <div className={classes.content}>
+          <div className={classes.leader}>
+            <div className={classes.categories}>
+              {categories?.map((category, index) => {
+                const { title: categoryTitle } = category as Category
+
+                const titleToUse = categoryTitle || 'Untitled category'
+
+                const isLast = index === categories.length - 1
+
+                return (
+                  <Fragment key={index}>
+                    {titleToUse}
+                    {!isLast && <Fragment>, &nbsp;</Fragment>}
+                  </Fragment>
+                )
+              })}
+            </div>
+          </div>{' '}
           <h1 className={classes.title}>{title}</h1>
           {hero && <RichText content={hero.richText} />}
         </div>
