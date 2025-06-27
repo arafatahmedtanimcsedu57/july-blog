@@ -67,7 +67,12 @@ export const Films: CollectionConfig = {
                   relationTo: 'media',
                   type: 'upload',
                 },
+                {
+                  name: 'videoLink',
+                  type: 'text',
+                },
               ],
+
               type: 'group',
             },
           ],

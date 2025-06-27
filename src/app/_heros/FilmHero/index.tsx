@@ -12,7 +12,15 @@ import classes from './index.module.scss'
 export const FilmHero: React.FC<{
   film: Film
 }> = ({ film }) => {
-  const { id, categories, hero, meta: { image: metaImage } = {}, publishedDate, title } = film
+  const {
+    id,
+    categories,
+    hero,
+    meta: { image: metaImage } = {},
+    publishedDate,
+    title,
+    videoLink,
+  } = film
 
   return (
     <Fragment>
@@ -64,6 +72,7 @@ export const FilmHero: React.FC<{
             )}
           </div>
         )}
+        {videoLink}
       </Gutter>
     </Fragment>
   )

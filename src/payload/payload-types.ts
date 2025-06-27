@@ -956,6 +956,7 @@ export interface Film {
       [k: string]: unknown;
     };
     media?: string | Media | null;
+    videoLink?: string | null;
   };
   layout: (
     | {
